@@ -1,6 +1,5 @@
 package abby.crystallised.items.tools;
 
-import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;

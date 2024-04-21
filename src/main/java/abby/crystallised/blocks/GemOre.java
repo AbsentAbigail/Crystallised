@@ -21,7 +21,7 @@ public class GemOre extends Block {
         WAS_PLACED = BooleanProperty.of("was_placed");
     }
 
-    private GemType type;
+    private final GemType type;
 
     protected static final Random RANDOM = new Random();
 
@@ -71,7 +71,13 @@ public class GemOre extends Block {
                     double d = RANDOM.nextGaussian() * 0.02D;
                     double e = RANDOM.nextGaussian() * 0.02D;
                     double f = RANDOM.nextGaussian() * 0.02D;
-                    world.addParticle(ParticleTypes.HAPPY_VILLAGER, (double)((float)pos.getX() + RANDOM.nextFloat()), (double)pos.getY() + (double)RANDOM.nextFloat() * blockState.getOutlineShape(world, pos).getMax(Direction.Axis.Y), (double)((float)pos.getZ() + RANDOM.nextFloat()), d, e, f);
+                    world.addParticle(
+                            ParticleTypes.HAPPY_VILLAGER,
+                            ((float)pos.getX() + RANDOM.nextFloat()),
+                            (double)pos.getY() + (double)RANDOM.nextFloat() * blockState.getOutlineShape(world, pos).getMax(Direction.Axis.Y),
+                            ((float)pos.getZ() + RANDOM.nextFloat()),
+                            d, e, f
+                    );
                 }
             }
         }

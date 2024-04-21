@@ -1,21 +1,17 @@
 package abby.crystallised.gems.implementation;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,13 +56,13 @@ public class Sapphire extends BaseImplementation {
             SoundEvent soundEvent = SoundEvents.BLOCK_GLASS_PLACE;
             SoundCategory soundCategory = SoundCategory.BLOCKS;
 
-            world.playSound((PlayerEntity)null, userPosition.getX(), userPosition.getY(), userPosition.getZ(), soundEvent, soundCategory);
+            world.playSound(null, userPosition.getX(), userPosition.getY(), userPosition.getZ(), soundEvent, soundCategory);
         }
         if (placedSnow) {
             SoundEvent soundEvent = SoundEvents.BLOCK_SNOW_PLACE;
             SoundCategory soundCategory = SoundCategory.BLOCKS;
 
-            world.playSound((PlayerEntity)null, userPosition.getX(), userPosition.getY(), userPosition.getZ(), soundEvent, soundCategory);
+            world.playSound(null, userPosition.getX(), userPosition.getY(), userPosition.getZ(), soundEvent, soundCategory);
         }
         return itemStack;
     }

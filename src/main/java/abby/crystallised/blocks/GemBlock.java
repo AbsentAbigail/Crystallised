@@ -5,7 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
 public class GemBlock extends Block {
-    private GemType type;
+    private final GemType type;
 
     public GemBlock(GemType type) {
         super(getSettingsFromType(type));

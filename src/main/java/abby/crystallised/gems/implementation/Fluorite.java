@@ -1,13 +1,11 @@
 package abby.crystallised.gems.implementation;
 
-import abby.crystallised.Utility;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Fluorite extends BaseImplementation {
     @Override

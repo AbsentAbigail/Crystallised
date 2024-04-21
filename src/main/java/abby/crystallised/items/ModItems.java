@@ -23,26 +23,14 @@ public class ModItems {
     public static final Map<String, Item> gemToolMap = new LinkedHashMap<>();
     public static final Map<String, Item> basicItemMap = new LinkedHashMap<>();
 
-    public static final Map<String, Item> spawnEggMap = new LinkedHashMap<>();
-
-//    public static final Item HELMET = new ArmorItem(ArmorMaterials.TEST, net.minecraft.item.ArmorItem.Type.HELMET, new Item.Settings());
-//    public static final Item CHESTPLATE = new ArmorItem(ArmorMaterials.TEST, net.minecraft.item.ArmorItem.Type.CHESTPLATE, new Item.Settings());
-//    public static final Item LEGGINGS = new ArmorItem(ArmorMaterials.TEST, net.minecraft.item.ArmorItem.Type.LEGGINGS, new Item.Settings());
-//    public static final Item BOOTS = new ArmorItem(ArmorMaterials.TEST, net.minecraft.item.ArmorItem.Type.BOOTS, new Item.Settings());
-
     public ModItems() {
         Utility.LOGGER.debug("START REGISTER ITEMS");
 
         registerGemItems();
-        //registerSpawnEggs();
 
         registerItemInMap("obsidian_shard", new BasicItem(), basicItemMap);
         registerItemInMap("tool_rod", new BasicItem(), basicItemMap);
 
-//        registerItem("testhelmet", HELMET);
-//        registerItem("testchestplate", CHESTPLATE);
-//        registerItem("testleggings", LEGGINGS);
-//        registerItem("testboots", BOOTS);
     }
 
     private void registerItemInMap(String name, Item item, Map<String, Item> map) {
@@ -55,13 +43,11 @@ public class ModItems {
 
         Registry.register(Registries.ITEM, Utility.identifier(name), item);
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(content -> {
-            content.add(item);
-        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(content -> content.add(item));
     }
 
     private void registerGemItems() {
-        String name = "";
+        String name;
         for(GemType type: GemType.MAP.values()) {
             name = type.getName();
             registerItemInMap(name, new GemItem(type), gemItemMap);
@@ -76,10 +62,10 @@ public class ModItems {
         String shovel = "_shovel";
         String sword = "_sword";
 
-        String namePick = "";
-        String nameAxe = "";
-        String nameShovel = "";
-        String nameSword = "";
+        String namePick;
+        String nameAxe;
+        String nameShovel;
+        String nameSword;
 
         for(GemType type: GemType.MAP.values()) {
             namePick = type.getName() + pickaxe;
@@ -106,15 +92,4 @@ public class ModItems {
         String name = ((MaterialGem)item.getMaterial()).getGemType().getName() + suffix;
         registerItem(name, item);
     }
-
-//    private void registerSpawnEggs() {
-//        for(GemType type: GemType.MAP.values()) {
-//            spawnEggMap.put("dragon_" + type.getName() + "_spawn_egg",
-//                    new SpawnEggItem(ModEntities.entityMap.get("dragon_" + type.getName()),
-//                            type.colour1(), type.colour2(), new Item.Settings().group(ItemGroups.GENERAL)));
-//        }
-//        spawnEggMap.forEach((name, item) -> {
-//            registerItem(name, item);
-//        });
-//    }
 }

@@ -25,12 +25,8 @@ public class ModItemGroups {
             .icon(() -> new ItemStack(ModItems.gemItemMap.get(GemType.MAP.get("SAPPHIRE").getName())))
             .displayName(Text.translatable("itemGroup.crystallised.general"))
             .entries(((displayContext, entries) -> {
-                ModItems.gemItemMap.forEach((s, item) -> {
-                        entries.add(item);
-                });
-                ModBlocks.blockMap.forEach((s, block) -> {
-                    entries.add(block);
-                });
+                ModItems.gemItemMap.forEach((s, item) -> entries.add(item));
+                ModBlocks.blockMap.forEach((s, block) -> entries.add(block));
             }))
             .build();
 
@@ -38,7 +34,7 @@ public class ModItemGroups {
             .icon(() -> new ItemStack(map.get(GemType.MAP.get("SAPPHIRE").getName() + "_pickaxe")))
             .displayName(Text.translatable("itemGroup.crystallised.tools"))
             .entries((context, entries) -> {
-                String name = "";
+                String name;
                 for(GemType type: GemType.MAP.values()) {
                     name = type.getName();
                     entries.add(new ItemStack(map.get(name + "_pickaxe")));

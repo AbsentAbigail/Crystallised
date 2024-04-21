@@ -80,27 +80,26 @@ public class GemType implements Comparable<GemType> {
                 new Tanzanite()).register();
     }
 
-    private String name;
-    private String displayname;
-    private float hardness;
-    private MaterialGem material;
+    private final String name;
+    private final float hardness;
+    private final MaterialGem material;
     private BaseImplementation implementation = new BaseImplementation();
 
-    private float capacity;
-    private float rarity;
-    private int primarycolour;
-    private int secondarycolour;
+    private final float capacity;
+    private final float rarity;
+    private final int primaryColour;
+    private final int secondaryColour;
 
     public GemType(String name,
                    float hardness,
                    float magicCapacity,
-                   int primarycolour, int secondarycolour) {
+                   int primaryColour, int secondaryColour) {
         this.name = name;
         this.hardness = hardness;
         this.capacity = magicCapacity;
         this.rarity = ((Math.round((20F - hardness - capacity) * 100F) / 100F) + 1F) / 10F;
-        this.primarycolour = primarycolour;
-        this.secondarycolour = secondarycolour;
+        this.primaryColour = primaryColour;
+        this.secondaryColour = secondaryColour;
         material = new MaterialGem(this);
     }
 
@@ -117,10 +116,6 @@ public class GemType implements Comparable<GemType> {
         return name;
     }
 
-    public String getDisplayname() {
-        return displayname;
-    }
-
     public float getHardness() {
         return hardness;
     }
@@ -134,11 +129,11 @@ public class GemType implements Comparable<GemType> {
     }
 
     public int colour1() {
-        return primarycolour;
+        return primaryColour;
     }
 
     public int colour2() {
-        return secondarycolour;
+        return secondaryColour;
     }
 
     public MaterialGem getMaterial() {

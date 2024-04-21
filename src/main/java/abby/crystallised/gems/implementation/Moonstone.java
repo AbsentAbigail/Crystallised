@@ -1,12 +1,10 @@
 package abby.crystallised.gems.implementation;
 
-import abby.crystallised.Utility;
 import abby.crystallised.miscellaneous.ModDamageSources;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -31,7 +29,7 @@ public class Moonstone extends BaseImplementation {
             SoundEvent soundEvent = SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT;
             SoundCategory soundCategory = SoundCategory.PLAYERS;
 
-            world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
+            world.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
 
             return itemStack;
         }
@@ -41,12 +39,12 @@ public class Moonstone extends BaseImplementation {
         } else if (moonphase == 4) {
             int mobCount = dealAOE(world, user, 7, 10);
             if (mobCount != 0) {
-                user.heal(mobCount);
+                user.heal(mobCount * 3);
 
-                SoundEvent soundEvent = SoundEvents.BLOCK_CONDUIT_AMBIENT;
+                SoundEvent soundEvent = SoundEvents.BLOCK_GLASS_BREAK;
                 SoundCategory soundCategory = SoundCategory.PLAYERS;
 
-                world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
+                world.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
             }
         }
         return itemStack;
@@ -57,7 +55,6 @@ public class Moonstone extends BaseImplementation {
                 user.getX() - radius, user.getY() - radius, user.getZ() - radius,
                 user.getX() + radius, user.getY() + radius, user.getZ() + radius
         );
-        int count = 0;
 
         List<Entity> entities = world.getOtherEntities(user, box, entity -> {
             entity.setGlowing(false);
@@ -65,14 +62,12 @@ public class Moonstone extends BaseImplementation {
                 return false;
             if (entity.squaredDistanceTo(user) > radius*radius)
                 return false;
-            if (!entity.isLiving())
-                return false;
-
-            entity.damage(ModDamageSources.of(world, ModDamageSources.MOONFALL), damage);
-
-            return true;
+            return entity.isLiving();
         });
 
-        return entities.size();
+        int count = entities.size();
+        entities.forEach(entity -> entity.damage(ModDamageSources.of(world, ModDamageSources.MOONFALL), damage));
+
+        return count;
     }
 }

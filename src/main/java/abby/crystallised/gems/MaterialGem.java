@@ -3,14 +3,13 @@ package abby.crystallised.gems;
 import abby.crystallised.Utility;
 import abby.crystallised.items.ModItems;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.TagKey;
 
 public class MaterialGem implements ToolMaterial {
-    private GemType type;
+    private final GemType type;
 
     public MaterialGem(GemType type) {
         this.type = type;
@@ -26,44 +25,26 @@ public class MaterialGem implements ToolMaterial {
     }
 
     public float getMiningSpeed() {
-        switch(type.getName().toUpperCase()) {
-            case "AMBER":
-                return 2.0F;
-            case "PETALITE":
-                return 8.0F;
-            case "AZURITE":
-            case "PHOSPHOPHYLLITE":
-                return 5F;
-            case "AMETHYST":
-            case "PERIDOT":
-                return 8.5F;
-            case "RUBY":
-            case "SAPPHIRE":
-                return 7.2F;
-            default:
-                return 8.0F;
-        }
+        return switch (type.getName().toUpperCase()) {
+            case "AMBER" -> 2.0F;
+            case "PETALITE" -> 8.0F;
+            case "AZURITE", "PHOSPHOPHYLLITE" -> 5F;
+            case "AMETHYST", "PERIDOT" -> 8.5F;
+            case "RUBY", "SAPPHIRE" -> 7.2F;
+            default -> 8.0F;
+        };
     }
 
     @Override
     public float getAttackDamage() {
-        switch(type.getName().toUpperCase()) {
-            case "AMBER":
-                return 2.0F;
-            case "PETALITE":
-                return 4.5F;
-            case "AZURITE":
-            case "PHOSPHOPHYLLITE":
-                return 6.0F;
-            case "AMETHYST":
-            case "PERIDOT":
-                return 2.1F;
-            case "RUBY":
-            case "SAPPHIRE":
-                return 2.7F;
-            default:
-                return 3.0F;
-        }
+        return switch (type.getName().toUpperCase()) {
+            case "AMBER" -> 2.0F;
+            case "PETALITE" -> 4.5F;
+            case "AZURITE", "PHOSPHOPHYLLITE" -> 6.0F;
+            case "AMETHYST", "PERIDOT" -> 2.1F;
+            case "RUBY", "SAPPHIRE" -> 2.7F;
+            default -> 3.0F;
+        };
     }
 
     @Override

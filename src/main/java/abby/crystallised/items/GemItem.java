@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 public class GemItem extends Item {
-    private GemType type;
+    private final GemType type;
 
     public GemItem(GemType type) {
         super(buildSettings(type));

@@ -1,7 +1,6 @@
 package abby.crystallised.gems.implementation;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -32,7 +31,7 @@ public class Kunzite extends BaseImplementation {
                 SoundCategory soundCategory = SoundCategory.PLAYERS;
                 SoundEvent soundEvent = SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT;
 
-                world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
+                world.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
                 user.onLanding();
                 break;
             }
