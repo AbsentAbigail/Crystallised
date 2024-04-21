@@ -1,0 +1,8 @@
+{
+  "parent": "crystallised:block/base_egg_1",
+  "textures": {
+    "particle": "crystallised:block/gem_block/kunzite_block",
+    "texture": "crystallised:block/gem_block/kunzite_block",
+    "overlay": "crystallised:block/cracks_1"
+  }
+}

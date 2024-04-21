@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "crystallised:amber_shovel",
+    "crystallised:azurite_shovel",
+    "crystallised:fluorite_shovel",
+    "crystallised:kunzite_shovel",
+    "crystallised:moissanite_shovel",
+    "crystallised:moonstone_shovel",
+    "crystallised:onyx_shovel",
+    "crystallised:peridot_shovel",
+    "crystallised:petalite_shovel",
+    "crystallised:phosphophyllite_shovel",
+    "crystallised:rosequartz_shovel",
+    "crystallised:ruby_shovel",
+    "crystallised:sapphire_shovel",
+    "crystallised:tanzanite_shovel"
+  ]
+}

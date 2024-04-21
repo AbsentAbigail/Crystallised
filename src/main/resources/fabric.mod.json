@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "crystallised",
+	"version": "${version}",
+	"name": "Crystallised",
+	"description": "Crystals. Too many crystals.",
+	"authors": [
+		"Absent Abigail"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/crystallised/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"abby.crystallised.Crystallised"
+		],
+		"client": [
+			"abby.crystallised.CrystallisedClient"
+		],
+		"fabric-datagen": [
+			"abby.crystallised.CrystallisedDataGenerator"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.10",
+		"minecraft": "1.20.5-rc.2",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

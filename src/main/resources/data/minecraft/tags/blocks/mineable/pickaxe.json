@@ -1,0 +1,34 @@
+{
+  "replace": false,
+  "values": [
+    "crystallised:amber_block",
+    "crystallised:azurite_block",
+    "crystallised:fluorite_block",
+    "crystallised:kunzite_block",
+    "crystallised:moissanite_block",
+    "crystallised:moonstone_block",
+    "crystallised:onyx_block",
+    "crystallised:peridot_block",
+    "crystallised:petalite_block",
+    "crystallised:phosphophyllite_block",
+    "crystallised:rosequartz_block",
+    "crystallised:ruby_block",
+    "crystallised:sapphire_block",
+    "crystallised:tanzanite_block",
+
+    "crystallised:amber_ore",
+    "crystallised:azurite_ore",
+    "crystallised:fluorite_ore",
+    "crystallised:kunzite_ore",
+    "crystallised:moissanite_ore",
+    "crystallised:moonstone_ore",
+    "crystallised:onyx_ore",
+    "crystallised:peridot_ore",
+    "crystallised:petalite_ore",
+    "crystallised:phosphophyllite_ore",
+    "crystallised:rosequartz_ore",
+    "crystallised:ruby_ore",
+    "crystallised:sapphire_ore",
+    "crystallised:tanzanite_ore"
+  ]
+}

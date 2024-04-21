@@ -1,0 +1,8 @@
+{
+  "parent": "crystallised:block/base_egg",
+  "textures": {
+    "particle": "crystallised:block/gem_block/ruby_block",
+    "texture": "crystallised:block/gem_block/ruby_block"
+  }
+}
+
