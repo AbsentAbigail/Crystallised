@@ -33,7 +33,8 @@ public class GemType implements Comparable<GemType> {
         new GemType("moissanite",
                 9.5F,
                 10F,
-                0xddfbf3, 0xddfbf3).register();
+                0xddfbf3, 0xddfbf3,
+                new Moissanite()).register();
         new GemType("moonstone",
                 6.5F,
                 13F,

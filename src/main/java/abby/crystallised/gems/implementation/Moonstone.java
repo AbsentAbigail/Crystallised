@@ -34,17 +34,29 @@ public class Moonstone extends BaseImplementation {
             return itemStack;
         }
 
+        // On full moon
         if (moonphase == 0) {
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 30, 2));
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20 * 2, 5));
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 20));
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 60 * 8, 4));
+        // Waning and waxing gibbous
+        } else if (moonphase == 1 || moonphase == 7) {
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 25 * 6, 1)); // Heal 6 health
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 4)); // Sate 4 hunger and 8 saturation
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20 * 15));
+        // Waning and waxing crescent
+        } else if (moonphase == 3 || moonphase == 5) {
+            int mobCount = dealAOE(world, user, 3, 7);
+            if (mobCount != 0) {
+                user.heal(mobCount);
+                playSound(user, world);
+            }
+        // On new moon
         } else if (moonphase == 4) {
-            int mobCount = dealAOE(world, user, 7, 10);
+            int mobCount = dealAOE(world, user, 7, 20);
             if (mobCount != 0) {
                 user.heal(mobCount * 3);
-
-                SoundEvent soundEvent = SoundEvents.BLOCK_GLASS_BREAK;
-                SoundCategory soundCategory = SoundCategory.PLAYERS;
-
-                world.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
+                playSound(user, world);
             }
         }
         return itemStack;
@@ -69,5 +81,12 @@ public class Moonstone extends BaseImplementation {
         entities.forEach(entity -> entity.damage(ModDamageSources.of(world, ModDamageSources.MOONFALL), damage));
 
         return count;
+    }
+
+    private void playSound(LivingEntity user, World world) {
+        SoundEvent soundEvent = SoundEvents.BLOCK_GLASS_BREAK;
+        SoundCategory soundCategory = SoundCategory.PLAYERS;
+
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
     }
 }

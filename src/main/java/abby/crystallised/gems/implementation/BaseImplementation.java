@@ -1,6 +1,7 @@
 package abby.crystallised.gems.implementation;
 
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
@@ -29,5 +30,12 @@ public class BaseImplementation {
 
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         return stack;
+    }
+
+    /**
+     * Ring item effects
+     */
+    public void tickInventory(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+
     }
 }
