@@ -26,7 +26,7 @@ public class ModItemGroups {
             .displayName(Text.translatable("itemGroup.crystallised.general"))
             .entries(((displayContext, entries) -> {
                 ModItems.gemItemMap.forEach((s, item) -> entries.add(item));
-                ModItems.scaleItemMap.forEach((s, item) -> entries.add(item));
+                ModItems.rawGemItemMap.forEach((s, item) -> entries.add(item));
                 ModItems.accessoryItemMap.forEach((s, item) -> entries.add(item));
                 ModBlocks.blockMap.forEach((s, block) -> entries.add(block));
                 ModItems.basicItemMap.forEach((s, item) -> entries.add(item));

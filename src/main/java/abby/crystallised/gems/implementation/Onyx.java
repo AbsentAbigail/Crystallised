@@ -27,26 +27,7 @@ public class Onyx extends BaseImplementation {
     @Override
     public void tickInventory(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         super.tickInventory(stack, world, entity, slot, selected);
-        if (world.isClient) {
-            return;
-        }
         LivingEntity livingEntity = (LivingEntity) entity;
-        if (true) {
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 21));
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 40));
-            world.getOtherEntities(
-                    livingEntity,
-                    new Box(livingEntity.getX() - 10, livingEntity.getY() - 10, livingEntity.getZ() - 10,
-                            livingEntity.getX() + 10, livingEntity.getY() + 10, livingEntity.getZ() + 10),
-                    mob -> {
-                        if (!(mob instanceof LivingEntity))
-                            return false;
-                        ((LivingEntity) mob).setAttacking(null);
-                        return true;
-                    }
-            );
-        } else {
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 21));
-        }
+        livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 210));
     }
 }

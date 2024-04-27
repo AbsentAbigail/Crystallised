@@ -2,6 +2,7 @@ package abby.crystallised.gems.implementation;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -21,13 +22,8 @@ public class Petalite extends BaseImplementation {
 
     @Override
     public void tickInventory(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        super.tickInventory(stack, world, entity, slot, selected);
         LivingEntity livingEntity = (LivingEntity) entity;
-        if (!livingEntity.isSneaking()) {
-            if (true) {
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.LEVITATION, 21, 2));
-            } else {
-                livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 21));
-            }
-        }
+        livingEntity.fallDistance = 0;
     }
 }

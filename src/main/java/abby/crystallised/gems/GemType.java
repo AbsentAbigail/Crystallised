@@ -10,12 +10,12 @@ public class GemType implements Comparable<GemType> {
     public static final Map<String, GemType> MAP = new LinkedHashMap<>();
 
     static {
-        new GemType("amber",
+        new GemType("amber", "Amber",
                 2.2F,
                 1F,
                 0xffab02, 0x916100,
                 new Amber()).register();
-        new GemType("azurite",
+        new GemType("azurite", "Azurite",
                 3.5F,
                 8F,
                 0x043681, 0x021c43,
@@ -25,12 +25,12 @@ public class GemType implements Comparable<GemType> {
                 4F,
                 0xffab02, 0x916100,
                 new Fluorite()).register();
-        new GemType("kunzite",
+        new GemType("kunzite", "Kunzite",
                 7F,
                 6F,
                 0xab4491, 0xda8bd7,
                 new Kunzite()).register();
-        new GemType("moissanite",
+        new GemType("moissanite", "Moissanite",
                 9.5F,
                 10F,
                 0xddfbf3, 0xddfbf3,
@@ -40,22 +40,22 @@ public class GemType implements Comparable<GemType> {
                 13F,
                 0xfbf5ff, 0x9cffff,
                 new Moonstone()).register();
-        new GemType("onyx",
+        new GemType("onyx", "Onyx",
                 7F,
                 7.5F,
                 0xffffff, 0x000000,
                 new Onyx()).register();
-        new GemType("peridot",
+        new GemType("peridot", "Peridot",
                 6.5F,
                 4F,
                 0x089f00, 0x045200,
                 new Peridot()).register();
-        new GemType("petalite",
+        new GemType("petalite", "Petalite",
                 6.0F,
                 4F,
                 0xf1e7ec, 0xe9a3c8,
                 new Petalite()).register();
-        new GemType("phosphophyllite",
+        new GemType("phosphophyllite", "Phosphophyllite",
                 3.5F,
                 2F,
                 0x21c773, 0x008340).register();
@@ -69,12 +69,12 @@ public class GemType implements Comparable<GemType> {
                 10F,
                 0xff0000, 0xff0000,
                 new Ruby()).register();
-        new GemType("sapphire",
+        new GemType("sapphire", "Sapphire",
                 9F,
                 10F,
                 0x1700ff, 0x1700ff,
                 new Sapphire()).register();
-        new GemType("tanzanite",
+        new GemType("tanzanite", "Tanzanite",
                 6.5F,
                 10F,
                 0xddfbf3, 0xddfbf3,
@@ -82,6 +82,7 @@ public class GemType implements Comparable<GemType> {
     }
 
     private final String name;
+    private final String displayName;
     private final float hardness;
     private final MaterialGem material;
     private BaseImplementation implementation = new BaseImplementation();
@@ -92,10 +93,12 @@ public class GemType implements Comparable<GemType> {
     private final int secondaryColour;
 
     public GemType(String name,
+                   String  displayName,
                    float hardness,
                    float magicCapacity,
                    int primaryColour, int secondaryColour) {
         this.name = name;
+        this.displayName = displayName;
         this.hardness = hardness;
         this.capacity = magicCapacity;
         this.rarity = ((Math.round((20F - hardness - capacity) * 100F) / 100F) + 1F) / 10F;
@@ -105,16 +108,21 @@ public class GemType implements Comparable<GemType> {
     }
 
     public GemType(String name,
+                   String displayName,
                    float hardness,
                    float magicCapacity,
                    int primarycolour, int secondarycolour,
                    BaseImplementation implementation) {
-        this(name, hardness, magicCapacity, primarycolour, secondarycolour);
+        this(name, displayName, hardness, magicCapacity, primarycolour, secondarycolour);
         this.implementation = implementation;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getDisplayName() {
+        return displayName;
     }
 
     public float getHardness() {

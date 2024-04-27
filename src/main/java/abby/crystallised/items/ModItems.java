@@ -3,7 +3,8 @@ package abby.crystallised.items;
 import abby.crystallised.Utility;
 import abby.crystallised.gems.GemType;
 import abby.crystallised.gems.MaterialGem;
-import abby.crystallised.items.jewelry.RingItem;
+import abby.crystallised.items.jewelry.MetalBase;
+import abby.crystallised.items.jewelry.BraceletItem;
 import abby.crystallised.items.tools.AxeBase;
 import abby.crystallised.items.tools.PickaxeBase;
 import abby.crystallised.items.tools.ShovelBase;
@@ -20,7 +21,7 @@ import java.util.Map;
 
 public class ModItems {
     public static final Map<String, Item> gemItemMap = new LinkedHashMap<>();
-    public static final Map<String, Item> scaleItemMap = new LinkedHashMap<>();
+    public static final Map<String, Item> rawGemItemMap = new LinkedHashMap<>();
     public static final Map<String, Item> accessoryItemMap = new LinkedHashMap<>();
     public static final Map<String, Item> gemToolMap = new LinkedHashMap<>();
     public static final Map<String, Item> basicItemMap = new LinkedHashMap<>();
@@ -53,8 +54,10 @@ public class ModItems {
         for(GemType type: GemType.MAP.values()) {
             name = type.getName();
             registerItemInMap(name, new GemItem(type), gemItemMap);
-            registerItemInMap(name + "_scale", new GemItem(type), scaleItemMap);
-            registerItemInMap(name + "_ring", new RingItem(type), accessoryItemMap);
+            registerItemInMap(name + "_raw", new GemItem(type), rawGemItemMap);
+            for (MetalBase metalBase : MetalBase.values()) {
+                registerItemInMap(name + metalBase.getItemName() + "_bracelet", new BraceletItem(type), accessoryItemMap);
+            }
         }
         registerTools();
     }

@@ -34,11 +34,7 @@ public class Moissanite extends BaseImplementation {
     public void tickInventory(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         super.tickInventory(stack, world, entity, slot, selected);
         LivingEntity livingEntity = (LivingEntity) entity;
-        if (true) {
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 21, 3));
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 21, 3));
-        } else {
-            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 21));
-        }
+        livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 30, 3));
+        livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 30));
     }
 }
