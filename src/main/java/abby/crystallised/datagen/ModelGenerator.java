@@ -112,18 +112,14 @@ public class ModelGenerator extends FabricModelProvider {
                         .texture(blockTexture)
                         .put(TextureKey.LAYER1, overlayTexture2)
         );
-        BlockStateVariantMap blockStateVariantMap = BlockStateVariantMap.create(GemCore.RECOVER).register((recover) -> {
-            switch (recover) {
-                case 0:
-                    return BlockStateVariant.create().put(VariantSettings.MODEL, charged);
-                case 1:
-                    return BlockStateVariant.create().put(VariantSettings.MODEL, recharging_1);
-                case 2:
-                    return BlockStateVariant.create().put(VariantSettings.MODEL, recharging_2);
-                default:
-                    throw new UnsupportedOperationException("Fix you generator!");
-            }
-        });
+        BlockStateVariantMap blockStateVariantMap = BlockStateVariantMap.create(GemCore.RECOVER)
+            .register((recover) ->
+                switch (recover) {
+                    case 0 -> BlockStateVariant.create().put(VariantSettings.MODEL, charged);
+                    case 1 -> BlockStateVariant.create().put(VariantSettings.MODEL, recharging_1);
+                    case 2 -> BlockStateVariant.create().put(VariantSettings.MODEL, recharging_2);
+                    default -> throw new UnsupportedOperationException("Fix you generator!");
+            });
         blockStateModelGenerator.blockStateCollector.accept(
                 VariantsBlockStateSupplier
                         .create(core)
