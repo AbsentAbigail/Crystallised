@@ -35,7 +35,7 @@ public class ModBlocks {
             blockMap.put(name + "_ore", new GemOre(type));
             blockMap.put(name + "_lamp", new GemLamp(false));
             blockMap.put(name + "_lamp_inverted", new GemLamp(true));
-            blockMap.put(name + "_egg", new GemEgg(type));
+            blockMap.put(name + "_gem_core", new GemCore(type));
         }
     }
 

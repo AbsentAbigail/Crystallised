@@ -20,7 +20,7 @@ public class GemType implements Comparable<GemType> {
                 8F,
                 0x043681, 0x021c43,
                 new Azurite()).register();
-        new GemType("fluorite",
+        new GemType("fluorite", "Fluorite",
                 4F,
                 4F,
                 0xffab02, 0x916100,
@@ -35,7 +35,7 @@ public class GemType implements Comparable<GemType> {
                 10F,
                 0xddfbf3, 0xddfbf3,
                 new Moissanite()).register();
-        new GemType("moonstone",
+        new GemType("moonstone", "Moonstone",
                 6.5F,
                 13F,
                 0xfbf5ff, 0x9cffff,
@@ -59,12 +59,12 @@ public class GemType implements Comparable<GemType> {
                 3.5F,
                 2F,
                 0x21c773, 0x008340).register();
-        new GemType("rosequartz",
+        new GemType("rosequartz", "Rose Quartz",
                 7F,
                 5F,
                 0xca5281, 0xe3a9e0,
                 new RoseQuartz()).register();
-        new GemType("ruby",
+        new GemType("ruby", "Ruby",
                 9F,
                 10F,
                 0xff0000, 0xff0000,

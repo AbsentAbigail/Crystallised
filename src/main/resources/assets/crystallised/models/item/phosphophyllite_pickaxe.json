@@ -1,4 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": { "layer0": "crystallised:item/pickaxe/phosphophyllite_pickaxe" }
-}

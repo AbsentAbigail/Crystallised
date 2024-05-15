@@ -3,8 +3,8 @@ package abby.crystallised.items;
 import abby.crystallised.Utility;
 import abby.crystallised.gems.GemType;
 import abby.crystallised.gems.MaterialGem;
-import abby.crystallised.items.jewelry.MetalBase;
 import abby.crystallised.items.jewelry.BraceletItem;
+import abby.crystallised.items.jewelry.MetalBase;
 import abby.crystallised.items.tools.AxeBase;
 import abby.crystallised.items.tools.PickaxeBase;
 import abby.crystallised.items.tools.ShovelBase;
@@ -56,7 +56,7 @@ public class ModItems {
             registerItemInMap(name, new GemItem(type), gemItemMap);
             registerItemInMap(name + "_raw", new GemItem(type), rawGemItemMap);
             for (MetalBase metalBase : MetalBase.values()) {
-                registerItemInMap(name + metalBase.getItemName() + "_bracelet", new BraceletItem(type), accessoryItemMap);
+                registerItemInMap(name + metalBase.getItemSuffix() + "_bracelet", new BraceletItem(type), accessoryItemMap);
             }
         }
         registerTools();

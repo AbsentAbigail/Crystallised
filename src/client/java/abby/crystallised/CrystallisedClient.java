@@ -11,6 +11,6 @@ public class CrystallisedClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		// This entrypoint is suitable for setting up client-specific logic, such as rendering.
 		GemType.MAP.forEach((s, gemType) ->
-				BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.blockMap.get(gemType.getName() + "_egg"), RenderLayer.getTranslucent()));
+				BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.blockMap.get(gemType.getName() + "_gem_core"), RenderLayer.getTranslucent()));
 	}
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "crystallised:block/base_egg",
-  "textures": {
-    "particle": "crystallised:block/gem_block/sapphire_block",
-    "texture": "crystallised:block/gem_block/sapphire_block"
-  }
-}
-

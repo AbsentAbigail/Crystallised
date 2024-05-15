@@ -7,7 +7,11 @@ public enum MetalBase {
     NETHERITE;
 
 
-    public String getItemName() {
+    public String getItemSuffix() {
         return "_" + this.name().toLowerCase();
+    }
+
+    public String getLowercaseName() {
+        return this.name().toLowerCase();
     }
 }
