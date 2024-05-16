@@ -79,6 +79,11 @@ public class GemType implements Comparable<GemType> {
             10F,
             0xddfbf3, 0xddfbf3,
             new Tanzanite()).register();
+    public static final GemType TOPAZ = new GemType("topaz", "Topaz",
+            8.0F,
+            9F,
+            0xfee002, 0xe98000,
+            new Topaz()).register();
 
 
     private final String name;
