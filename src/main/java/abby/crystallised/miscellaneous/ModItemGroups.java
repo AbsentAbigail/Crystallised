@@ -22,7 +22,7 @@ public class ModItemGroups {
     private static final Map<String, Item> map = ModItems.gemToolMap;
 
     private static final ItemGroup GENERAL_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModItems.gemItemMap.get(GemType.MAP.get("SAPPHIRE").getName())))
+            .icon(() -> new ItemStack(ModItems.gemItemMap.get(GemType.SAPPHIRE.getName())))
             .displayName(Text.translatable("itemGroup.crystallised.general"))
             .entries(((displayContext, entries) -> {
                 ModItems.gemItemMap.forEach((s, item) -> entries.add(item));
@@ -34,7 +34,7 @@ public class ModItemGroups {
             .build();
 
     private static final ItemGroup TOOL_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(map.get(GemType.MAP.get("SAPPHIRE").getName() + "_pickaxe")))
+            .icon(() -> new ItemStack(map.get(GemType.SAPPHIRE.getName() + "_pickaxe")))
             .displayName(Text.translatable("itemGroup.crystallised.tools"))
             .entries((context, entries) -> {
                 String name;

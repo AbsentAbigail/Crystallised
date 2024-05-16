@@ -26,13 +26,16 @@ public class ModItems {
     public static final Map<String, Item> gemToolMap = new LinkedHashMap<>();
     public static final Map<String, Item> basicItemMap = new LinkedHashMap<>();
 
+    public static final Item OBSIDIAN_SHARD = new BasicItem();
+    public static final Item TOOL_ROD = new BasicItem();
+
     public ModItems() {
         Utility.LOGGER.debug("START REGISTER ITEMS");
 
         registerGemItems();
 
-        registerItemInMap("obsidian_shard", new BasicItem(), basicItemMap);
-        registerItemInMap("tool_rod", new BasicItem(), basicItemMap);
+        registerItemInMap("obsidian_shard", OBSIDIAN_SHARD, basicItemMap);
+        registerItemInMap("tool_rod", TOOL_ROD, basicItemMap);
 
     }
 
@@ -50,15 +53,13 @@ public class ModItems {
     }
 
     private void registerGemItems() {
-        String name;
-        for(GemType type: GemType.MAP.values()) {
-            name = type.getName();
+        GemType.forEach((name, type) -> {
             registerItemInMap(name, new GemItem(type), gemItemMap);
             registerItemInMap(name + "_raw", new GemItem(type), rawGemItemMap);
             for (MetalBase metalBase : MetalBase.values()) {
                 registerItemInMap(name + metalBase.getItemSuffix() + "_bracelet", new BraceletItem(type), accessoryItemMap);
             }
-        }
+        });
         registerTools();
     }
 
@@ -68,16 +69,11 @@ public class ModItems {
         String shovel = "_shovel";
         String sword = "_sword";
 
-        String namePick;
-        String nameAxe;
-        String nameShovel;
-        String nameSword;
-
-        for(GemType type: GemType.MAP.values()) {
-            namePick = type.getName() + pickaxe;
-            nameAxe = type.getName() + axe;
-            nameShovel = type.getName() + shovel;
-            nameSword = type.getName() + sword;
+        GemType.forEach((name, type) -> {
+            String namePick = name + pickaxe;
+            String nameAxe = name + axe;
+            String nameShovel = name + shovel;
+            String nameSword = name + sword;
 
             gemToolMap.put(namePick, new PickaxeBase(type.getMaterial()));
             registerTool((ToolItem)gemToolMap.get(namePick), pickaxe);
@@ -90,11 +86,10 @@ public class ModItems {
 
             gemToolMap.put(nameSword, new SwordBase(type.getMaterial()));
             registerTool((ToolItem)gemToolMap.get(nameSword), sword);
-        }
+        });
     }
 
     private void registerTool(ToolItem item, String suffix) {
-
         String name = ((MaterialGem)item.getMaterial()).getGemType().getName() + suffix;
         registerItem(name, item);
     }

@@ -28,15 +28,13 @@ public class ModBlocks {
     }
 
     private void registerGemBlocks() {
-        String name;
-        for(GemType type: GemType.MAP.values()) {
-            name = type.getName();
+        GemType.forEach((name, type) -> {
             blockMap.put(name + "_block", new GemBlock(type));
             blockMap.put(name + "_ore", new GemOre(type));
             blockMap.put(name + "_lamp", new GemLamp(false));
             blockMap.put(name + "_lamp_inverted", new GemLamp(true));
             blockMap.put(name + "_gem_core", new GemCore(type));
-        }
+        });
     }
 
     private void registerBlock(Block block, String name) {

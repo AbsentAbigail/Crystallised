@@ -36,7 +36,7 @@ public class GemCore extends Block {
         if (boat)
             return VoxelShapes.fullCube();
 
-        boolean empty = getGemType().equals(GemType.MAP.get("ONYX")) && state.get(RECOVER) == 2;
+        boolean empty = getGemType().equals(GemType.MAP.get(GemType.ONYX.getName())) && state.get(RECOVER) == 2;
         return empty ? VoxelShapes.empty() : VoxelShapes.fullCube();
     }
 

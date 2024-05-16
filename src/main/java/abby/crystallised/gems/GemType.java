@@ -5,81 +5,81 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class GemType implements Comparable<GemType> {
     public static final Map<String, GemType> MAP = new LinkedHashMap<>();
 
-    static {
-        new GemType("amber", "Amber",
-                2.2F,
-                1F,
-                0xffab02, 0x916100,
-                new Amber()).register();
-        new GemType("azurite", "Azurite",
-                3.5F,
-                8F,
-                0x043681, 0x021c43,
-                new Azurite()).register();
-        new GemType("fluorite", "Fluorite",
-                4F,
-                4F,
-                0xffab02, 0x916100,
-                new Fluorite()).register();
-        new GemType("kunzite", "Kunzite",
-                7F,
-                6F,
-                0xab4491, 0xda8bd7,
-                new Kunzite()).register();
-        new GemType("moissanite", "Moissanite",
-                9.5F,
-                10F,
-                0xddfbf3, 0xddfbf3,
-                new Moissanite()).register();
-        new GemType("moonstone", "Moonstone",
-                6.5F,
-                13F,
-                0xfbf5ff, 0x9cffff,
-                new Moonstone()).register();
-        new GemType("onyx", "Onyx",
-                7F,
-                7.5F,
-                0xffffff, 0x000000,
-                new Onyx()).register();
-        new GemType("peridot", "Peridot",
-                6.5F,
-                4F,
-                0x089f00, 0x045200,
-                new Peridot()).register();
-        new GemType("petalite", "Petalite",
-                6.0F,
-                4F,
-                0xf1e7ec, 0xe9a3c8,
-                new Petalite()).register();
-        new GemType("phosphophyllite", "Phosphophyllite",
-                3.5F,
-                2F,
-                0x21c773, 0x008340).register();
-        new GemType("rosequartz", "Rose Quartz",
-                7F,
-                5F,
-                0xca5281, 0xe3a9e0,
-                new RoseQuartz()).register();
-        new GemType("ruby", "Ruby",
-                9F,
-                10F,
-                0xff0000, 0xff0000,
-                new Ruby()).register();
-        new GemType("sapphire", "Sapphire",
-                9F,
-                10F,
-                0x1700ff, 0x1700ff,
-                new Sapphire()).register();
-        new GemType("tanzanite", "Tanzanite",
-                6.5F,
-                10F,
-                0xddfbf3, 0xddfbf3,
-                new Tanzanite()).register();
-    }
+    public static final GemType AMBER = new GemType("amber", "Amber",
+            2.2F,
+            1F,
+            0xffab02, 0x916100,
+            new Amber()).register();
+    public static final GemType AZURITE = new GemType("azurite", "Azurite",
+            3.5F,
+            8F,
+            0x043681, 0x021c43,
+            new Azurite()).register();
+    public static final GemType FLUORITE = new GemType("fluorite", "Fluorite",
+            4F,
+            4F,
+            0xffab02, 0x916100,
+            new Fluorite()).register();
+    public static final GemType KUNZITE = new GemType("kunzite", "Kunzite",
+            7F,
+            6F,
+            0xab4491, 0xda8bd7,
+            new Kunzite()).register();
+    public static final GemType MOISSANITE = new GemType("moissanite", "Moissanite",
+            9.5F,
+            10F,
+            0xddfbf3, 0xddfbf3,
+            new Moissanite()).register();
+    public static final GemType MOONSTONE = new GemType("moonstone", "Moonstone",
+            6.5F,
+            13F,
+            0xfbf5ff, 0x9cffff,
+            new Moonstone()).register();
+    public static final GemType ONYX = new GemType("onyx", "Onyx",
+            7F,
+            7.5F,
+            0xffffff, 0x000000,
+            new Onyx()).register();
+    public static final GemType PERIDOT = new GemType("peridot", "Peridot",
+            6.5F,
+            4F,
+            0x089f00, 0x045200,
+            new Peridot()).register();
+    public static final GemType PETALITE = new GemType("petalite", "Petalite",
+            6.0F,
+            4F,
+            0xf1e7ec, 0xe9a3c8,
+            new Petalite()).register();
+    public static final GemType PHOSPHOPHYLLITE = new GemType("phosphophyllite", "Phosphophyllite",
+            3.5F,
+            2F,
+            0x21c773, 0x008340).register();
+    public static final GemType ROSEQUARTZ = new GemType("rosequartz", "Rose Quartz",
+            7F,
+            5F,
+            0xca5281, 0xe3a9e0,
+            new RoseQuartz()).register();
+    public static final GemType RUBY = new GemType("ruby", "Ruby",
+            9F,
+            10F,
+            0xff0000, 0xff0000,
+            new Ruby()).register();
+    public static final GemType SAPPHIRE = new GemType("sapphire", "Sapphire",
+            9F,
+            10F,
+            0x1700ff, 0x1700ff,
+            new Sapphire()).register();
+    public static final GemType TANZANITE = new GemType("tanzanite", "Tanzanite",
+            6.5F,
+            10F,
+            0xddfbf3, 0xddfbf3,
+            new Tanzanite()).register();
+
 
     private final String name;
     private final String displayName;
@@ -153,12 +153,17 @@ public class GemType implements Comparable<GemType> {
         return implementation;
     }
 
-    public void register() {
-        GemType.MAP.put(this.name.toUpperCase(), this);
+    public GemType register() {
+        GemType.MAP.put(this.name, this);
+        return this;
     }
 
     @Override
     public int compareTo(@NotNull GemType o) {
         return this.name.compareTo(o.name);
+    }
+
+    public static void forEach(BiConsumer<String, GemType> function) {
+        MAP.forEach(function);
     }
 }

@@ -24,8 +24,7 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
         this.translationBuilder = translationBuilder;
 
-        GemType.MAP.forEach((s, gemType) -> {
-            String name = gemType.getName();
+        GemType.forEach((name, gemType) -> {
             String displayName = gemType.getDisplayName();
 
             addTranslation(ModItems.gemItemMap.get(name), "Cut " + gemType.getDisplayName());
@@ -42,7 +41,7 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
 
             addTranslation(ModBlocks.blockMap.get(name + "_block"), "Block of " + displayName);
             addTranslation(ModBlocks.blockMap.get(name + "_ore"), displayName + " Ore");
-//            addTranslation(ModBlocks.blockMap.get(name + "_egg"), displayName + " Egg");
+            addTranslation(ModBlocks.blockMap.get(name + "_gem_core"), displayName + " Core");
             addTranslation(ModBlocks.blockMap.get(name + "_lamp"), displayName + " Lamp");
             addTranslation(ModBlocks.blockMap.get(name + "_lamp_inverted"), displayName + " Inverted Lamp");
         });
