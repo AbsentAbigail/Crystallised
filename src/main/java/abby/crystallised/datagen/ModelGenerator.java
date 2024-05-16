@@ -1,5 +1,6 @@
 package abby.crystallised.datagen;
 
+import abby.crystallised.Constants;
 import abby.crystallised.Utility;
 import abby.crystallised.blocks.GemCore;
 import abby.crystallised.blocks.ModBlocks;
@@ -17,7 +18,7 @@ import java.util.Optional;
 
 public class ModelGenerator extends FabricModelProvider {
     private static final String BRACELET_SUFFIX = "_bracelet";
-    private static final String GEM_CORE_SUFFIX = "_gem_core";
+    private static final String GEM_CORE_SUFFIX = Constants.CORE_SUFFIX;
 
     public static final Model OVERLAYED_BLOCK = new Model(
             Optional.of(Utility.identifier("block/gem_core_template")),
@@ -35,8 +36,8 @@ public class ModelGenerator extends FabricModelProvider {
         GemType.MAP.forEach((s, gemType) -> {
             String name = gemType.getName();
 
-            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + "_block"));
-            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + "_ore"));
+            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX));
+            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX));
             registerLamps(blockStateModelGenerator, gemType);
             registerCore(blockStateModelGenerator, gemType);
         });
@@ -48,12 +49,12 @@ public class ModelGenerator extends FabricModelProvider {
             String name = gemType.getName();
 
             itemModelGenerator.register(ModItems.gemItemMap.get(name), Models.GENERATED);
-            itemModelGenerator.register(ModItems.rawGemItemMap.get(name + "_raw"), Models.GENERATED);
+            itemModelGenerator.register(ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX), Models.GENERATED);
 
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + "_pickaxe"), Models.HANDHELD);
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + "_shovel"), Models.HANDHELD);
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + "_axe"), Models.HANDHELD);
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + "_sword"), Models.HANDHELD);
+            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.PICKAXE_SUFFIX), Models.HANDHELD);
+            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.SHOVEL_SUFFIX), Models.HANDHELD);
+            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.AXE_SUFFIX), Models.HANDHELD);
+            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX), Models.HANDHELD);
 
             for (MetalBase base : MetalBase.values()) {
                 layeredTexture(
@@ -82,7 +83,7 @@ public class ModelGenerator extends FabricModelProvider {
         String name = type.getName();
         Block core = ModBlocks.blockMap.get(name + GEM_CORE_SUFFIX);
 
-        Identifier blockTexture = blockIdentifier(name + "_block");
+        Identifier blockTexture = blockIdentifier(name + Constants.BLOCK_SUFFIX);
         Identifier overlayTexture = blockIdentifier("gem_core_overlay");
         Identifier overlayTexture1 = blockIdentifier("gem_core_overlay_1");
         Identifier overlayTexture2 = blockIdentifier("gem_core_overlay_2");
@@ -128,8 +129,8 @@ public class ModelGenerator extends FabricModelProvider {
     }
 
     private void registerLamps(BlockStateModelGenerator blockStateModelGenerator, GemType type) {
-        Block normal = ModBlocks.blockMap.get(type.getName() + "_lamp");
-        Block inverted = ModBlocks.blockMap.get(type.getName() + "_lamp_inverted");
+        Block normal = ModBlocks.blockMap.get(type.getName() + Constants.LAMP_SUFFIX);
+        Block inverted = ModBlocks.blockMap.get(type.getName() + Constants.INVERTED_LAMP_SUFFIX);
 
         Identifier id_notlit = TexturedModel.CUBE_ALL.upload(
                 normal,
@@ -137,7 +138,7 @@ public class ModelGenerator extends FabricModelProvider {
         );
         Identifier id_lit = blockStateModelGenerator.createSubModel(
                 normal,
-                "_inverted",
+                Constants.INVERTED_SUFFIX,
                 Models.CUBE_ALL,
                 TextureMap::all
         );

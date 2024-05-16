@@ -1,5 +1,6 @@
 package abby.crystallised.datagen;
 
+import abby.crystallised.Constants;
 import abby.crystallised.Utility;
 import abby.crystallised.blocks.ModBlocks;
 import abby.crystallised.gems.GemType;
@@ -28,22 +29,22 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
             String displayName = gemType.getDisplayName();
 
             addTranslation(ModItems.gemItemMap.get(name), "Cut " + gemType.getDisplayName());
-            addTranslation(ModItems.rawGemItemMap.get(name + "_raw"), "Raw " + gemType.getDisplayName());
+            addTranslation(ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX), "Raw " + gemType.getDisplayName());
 
-            addTranslation(ModItems.gemToolMap.get(name + "_pickaxe"), displayName + " Pickaxe");
-            addTranslation(ModItems.gemToolMap.get(name + "_axe"), displayName + " Axe");
-            addTranslation(ModItems.gemToolMap.get(name + "_shovel"), displayName + " Shovel");
-            addTranslation(ModItems.gemToolMap.get(name + "_sword"), displayName + " Sword");
+            addTranslation(ModItems.gemToolMap.get(name + Constants.PICKAXE_SUFFIX), displayName + " Pickaxe");
+            addTranslation(ModItems.gemToolMap.get(name + Constants.AXE_SUFFIX), displayName + " Axe");
+            addTranslation(ModItems.gemToolMap.get(name + Constants.SHOVEL_SUFFIX), displayName + " Shovel");
+            addTranslation(ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX), displayName + " Sword");
 
             for (MetalBase metal : MetalBase.values()) {
-                addTranslation(ModItems.accessoryItemMap.get(name + metal.getItemSuffix() + "_bracelet"), displayName + " Bracelet");
+                addTranslation(ModItems.accessoryItemMap.get(name + metal.getItemSuffix() + Constants.BRACELET_SUFFIX), displayName + " Bracelet");
             }
 
-            addTranslation(ModBlocks.blockMap.get(name + "_block"), "Block of " + displayName);
-            addTranslation(ModBlocks.blockMap.get(name + "_ore"), displayName + " Ore");
-            addTranslation(ModBlocks.blockMap.get(name + "_gem_core"), displayName + " Core");
-            addTranslation(ModBlocks.blockMap.get(name + "_lamp"), displayName + " Lamp");
-            addTranslation(ModBlocks.blockMap.get(name + "_lamp_inverted"), displayName + " Inverted Lamp");
+            addTranslation(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX), "Block of " + displayName);
+            addTranslation(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX), displayName + " Ore");
+            addTranslation(ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX), displayName + " Core");
+            addTranslation(ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX), displayName + " Lamp");
+            addTranslation(ModBlocks.blockMap.get(name + Constants.INVERTED_LAMP_SUFFIX), displayName + " Inverted Lamp");
         });
 
         addTranslation(ModBlocks.blockMap.get("gem_cutter"), "Gem Cutter");

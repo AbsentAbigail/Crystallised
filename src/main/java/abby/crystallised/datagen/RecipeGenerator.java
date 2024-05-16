@@ -1,5 +1,6 @@
 package abby.crystallised.datagen;
 
+import abby.crystallised.Constants;
 import abby.crystallised.gems.GemType;
 import abby.crystallised.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -32,14 +33,12 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         GemType.forEach((s, gemType) -> {
-            String raw_name = gemType.getName() + "_raw";
+            String raw_name = gemType.getName() + Constants.RAW_SUFFIX;
             String cut_name = gemType.getName();
             Item raw = ModItems.rawGemItemMap.get(raw_name);
             Item cut = ModItems.gemItemMap.get(cut_name);
 
             RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.MISC, cut, raw);
         });
-
-
     }
 }

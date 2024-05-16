@@ -1,5 +1,6 @@
 package abby.crystallised.miscellaneous;
 
+import abby.crystallised.Constants;
 import abby.crystallised.Utility;
 import abby.crystallised.blocks.ModBlocks;
 import abby.crystallised.gems.GemType;
@@ -34,16 +35,16 @@ public class ModItemGroups {
             .build();
 
     private static final ItemGroup TOOL_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(map.get(GemType.SAPPHIRE.getName() + "_pickaxe")))
+            .icon(() -> new ItemStack(map.get(GemType.SAPPHIRE.getName() + Constants.PICKAXE_SUFFIX)))
             .displayName(Text.translatable("itemGroup.crystallised.tools"))
             .entries((context, entries) -> {
                 String name;
                 for(GemType type: GemType.MAP.values()) {
                     name = type.getName();
-                    entries.add(new ItemStack(map.get(name + "_pickaxe")));
-                    entries.add(new ItemStack(map.get(name + "_axe")));
-                    entries.add(new ItemStack(map.get(name + "_shovel")));
-                    entries.add(new ItemStack(map.get(name + "_sword")));
+                    entries.add(new ItemStack(map.get(name + Constants.PICKAXE_SUFFIX)));
+                    entries.add(new ItemStack(map.get(name + Constants.AXE_SUFFIX)));
+                    entries.add(new ItemStack(map.get(name + Constants.SHOVEL_SUFFIX)));
+                    entries.add(new ItemStack(map.get(name + Constants.SWORD_SUFFIX)));
                 }
             })
             .build();

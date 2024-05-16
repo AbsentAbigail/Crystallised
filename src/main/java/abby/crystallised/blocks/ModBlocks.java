@@ -1,5 +1,6 @@
 package abby.crystallised.blocks;
 
+import abby.crystallised.Constants;
 import abby.crystallised.Utility;
 import abby.crystallised.gems.GemType;
 import net.minecraft.block.Block;
@@ -29,11 +30,11 @@ public class ModBlocks {
 
     private void registerGemBlocks() {
         GemType.forEach((name, type) -> {
-            blockMap.put(name + "_block", new GemBlock(type));
-            blockMap.put(name + "_ore", new GemOre(type));
-            blockMap.put(name + "_lamp", new GemLamp(false));
-            blockMap.put(name + "_lamp_inverted", new GemLamp(true));
-            blockMap.put(name + "_gem_core", new GemCore(type));
+            blockMap.put(name + Constants.BLOCK_SUFFIX, new GemBlock(type));
+            blockMap.put(name + Constants.ORE_SUFFIX, new GemOre(type));
+            blockMap.put(name + Constants.LAMP_SUFFIX, new GemLamp(false));
+            blockMap.put(name + Constants.INVERTED_LAMP_SUFFIX, new GemLamp(true));
+            blockMap.put(name + Constants.CORE_SUFFIX, new GemCore(type));
         });
     }
 

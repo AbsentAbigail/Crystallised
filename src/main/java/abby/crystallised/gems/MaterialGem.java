@@ -1,11 +1,10 @@
 package abby.crystallised.gems;
 
-import abby.crystallised.Utility;
 import abby.crystallised.items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
 
 public class MaterialGem implements ToolMaterial {
@@ -21,10 +20,6 @@ public class MaterialGem implements ToolMaterial {
 
     @Override
     public float getMiningSpeedMultiplier() {
-        return 1;
-    }
-
-    public float getMiningSpeed() {
         return switch (type.getName().toUpperCase()) {
             case "AMBER" -> 2.0F;
             case "PETALITE" -> 8.0F;
@@ -49,22 +44,17 @@ public class MaterialGem implements ToolMaterial {
 
     @Override
     public TagKey<Block> getInverseTag() {
-        return TagKey.of(Registries.BLOCK.getKey(), Utility.identifier("inverse_tag"));
-    }
+        double h = type.getHardness();
 
-//    @Override
-//    public int getMiningLevel() {
-//        double h = type.getHardness();
-//
-//        return h >= 8 ? 3 :
-//                (h > 6 ? 2 :
-//                        (h > 4 ? 1 :
-//                                0));
-//    }
+        return h >= 8 ? BlockTags.INCORRECT_FOR_DIAMOND_TOOL :
+                (h >= 6 ? BlockTags.INCORRECT_FOR_IRON_TOOL :
+                        (h >= 4 ? BlockTags.INCORRECT_FOR_STONE_TOOL :
+                                BlockTags.INCORRECT_FOR_WOODEN_TOOL));
+    }
 
     @Override
     public int getEnchantability() {
-        return 30;
+        return type.getCapacity();
     }
 
     @Override
