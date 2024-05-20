@@ -5,7 +5,9 @@ import abby.crystallised.Utility;
 import abby.crystallised.gems.GemType;
 import abby.crystallised.gems.MaterialGem;
 import abby.crystallised.items.jewelry.BraceletItem;
+import abby.crystallised.items.jewelry.KeyItem;
 import abby.crystallised.items.jewelry.MetalBase;
+import abby.crystallised.items.jewelry.NecklaceItem;
 import abby.crystallised.items.tools.AxeBase;
 import abby.crystallised.items.tools.PickaxeBase;
 import abby.crystallised.items.tools.ShovelBase;
@@ -31,6 +33,11 @@ public class ModItems {
     public ModItems() {
         Utility.LOGGER.debug("START REGISTER ITEMS");
 
+        for (MetalBase metalBase : MetalBase.values()) {
+            registerItemInMap(metalBase.getLowercaseName() + Constants.BRACELET_SUFFIX, new BasicItem(), accessoryItemMap);
+            registerItemInMap(metalBase.getLowercaseName() + Constants.NECKLACE_SUFFIX, new BasicItem(), accessoryItemMap);
+            registerItemInMap(metalBase.getLowercaseName() + Constants.KEY_SUFFIX, new BasicItem(), accessoryItemMap);
+        }
         registerGemItems();
 
         registerItemInMap("obsidian_shard", OBSIDIAN_SHARD, basicItemMap);
@@ -52,6 +59,8 @@ public class ModItems {
             registerItemInMap(name + Constants.RAW_SUFFIX, new RawGemItem(type), rawGemItemMap);
             for (MetalBase metalBase : MetalBase.values()) {
                 registerItemInMap(name + metalBase.getItemSuffix() + Constants.BRACELET_SUFFIX, new BraceletItem(type), accessoryItemMap);
+                registerItemInMap(name + metalBase.getItemSuffix() + Constants.NECKLACE_SUFFIX, new NecklaceItem(type), accessoryItemMap);
+                registerItemInMap(name + metalBase.getItemSuffix() + Constants.KEY_SUFFIX, new KeyItem(type), accessoryItemMap);
             }
         });
         registerTools();

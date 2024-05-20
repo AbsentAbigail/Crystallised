@@ -17,27 +17,23 @@ import net.minecraft.util.Identifier;
 import java.util.Optional;
 
 public class ModelGenerator extends FabricModelProvider {
-    private static final String BRACELET_SUFFIX = "_bracelet";
-    private static final String GEM_CORE_SUFFIX = Constants.CORE_SUFFIX;
-
     public static final Model OVERLAYED_BLOCK = new Model(
             Optional.of(Utility.identifier("block/gem_core_template")),
             Optional.empty(),
             TextureKey.TEXTURE,
             TextureKey.LAYER1
     );
+
     public ModelGenerator(FabricDataOutput output) {
         super(output);
     }
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
-        GemType.MAP.forEach((s, gemType) -> {
-            String name = gemType.getName();
-
+        GemType.MAP.forEach((name, gemType) -> {
             blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX));
             blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX));
+            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX + Constants.DEEPSLATE_SUFFIX));
             registerLamps(blockStateModelGenerator, gemType);
             registerCore(blockStateModelGenerator, gemType);
         });
@@ -51,25 +47,86 @@ public class ModelGenerator extends FabricModelProvider {
             itemModelGenerator.register(ModItems.gemItemMap.get(name), Models.GENERATED);
             itemModelGenerator.register(ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX), Models.GENERATED);
 
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.PICKAXE_SUFFIX), Models.HANDHELD);
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.SHOVEL_SUFFIX), Models.HANDHELD);
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.AXE_SUFFIX), Models.HANDHELD);
-            itemModelGenerator.register(ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX), Models.HANDHELD);
+            simpleHandheldTexture(
+                    name + Constants.PICKAXE_SUFFIX,
+                    Constants.PICKAXE_PATH_PREFIX + name + Constants.PICKAXE_SUFFIX,
+                    itemModelGenerator
+            );
+            simpleHandheldTexture(
+                    name + Constants.SHOVEL_SUFFIX,
+                    Constants.SHOVEL_PATH_PREFIX + name + Constants.SHOVEL_SUFFIX,
+                    itemModelGenerator
+            );
+            simpleHandheldTexture(
+                    name + Constants.AXE_SUFFIX,
+                    Constants.AXE_PATH_PREFIX + name + Constants.AXE_SUFFIX,
+                    itemModelGenerator
+            );
+            simpleHandheldTexture(
+                    name + Constants.SWORD_SUFFIX,
+                    Constants.SWORD_PATH_PREFIX + name + Constants.SWORD_SUFFIX,
+                    itemModelGenerator
+            );
 
             for (MetalBase base : MetalBase.values()) {
                 layeredTexture(
-                        name + base.getItemSuffix() + BRACELET_SUFFIX,
-                        base.getLowercaseName() + BRACELET_SUFFIX,
-                        "accessory/" + name,
+                        name + base.getItemSuffix() + Constants.BRACELET_SUFFIX,
+                        Constants.BRACELET_PATH_PREFIX + base.getLowercaseName() + Constants.BRACELET_SUFFIX,
+                        Constants.BRACELET_PATH_PREFIX + name,
+                        itemModelGenerator);
+
+                layeredTexture(
+                        name + base.getItemSuffix() + Constants.NECKLACE_SUFFIX,
+                        Constants.NECKLACE_PATH_PREFIX + base.getLowercaseName() + Constants.NECKLACE_SUFFIX,
+                        Constants.NECKLACE_PATH_PREFIX + name,
+                        itemModelGenerator);
+
+                layeredTexture(
+                        name + base.getItemSuffix() + Constants.KEY_SUFFIX,
+                        Constants.KEY_PATH_PREFIX + base.getLowercaseName() + Constants.KEY_SUFFIX,
+                        Constants.KEY_PATH_PREFIX + name,
                         itemModelGenerator);
             }
         });
+
+        for (MetalBase base : MetalBase.values()) {
+            simpleItemTexture(
+                    base.getLowercaseName() + Constants.BRACELET_SUFFIX,
+                    Constants.BRACELET_PATH_PREFIX + base.getLowercaseName() + Constants.BRACELET_SUFFIX,
+                    itemModelGenerator);
+
+            simpleItemTexture(
+                    base.getLowercaseName() + Constants.NECKLACE_SUFFIX,
+                    Constants.NECKLACE_PATH_PREFIX + base.getLowercaseName() + Constants.NECKLACE_SUFFIX,
+                    itemModelGenerator);
+
+            simpleItemTexture(
+                    base.getLowercaseName() + Constants.KEY_SUFFIX,
+                    Constants.KEY_PATH_PREFIX + base.getLowercaseName() + Constants.KEY_SUFFIX,
+                    itemModelGenerator);
+        }
 
         itemModelGenerator.register(ModItems.basicItemMap.get("obsidian_shard"), Models.GENERATED);
         itemModelGenerator.register(ModItems.basicItemMap.get("tool_rod"), Models.GENERATED);
     }
 
-    public final void layeredTexture(String id, String layer0, String layer1, ItemModelGenerator itemModelGenerator) {
+    private void simpleHandheldTexture(String id, String texture, ItemModelGenerator itemModelGenerator) {
+        Models.HANDHELD.upload(
+                itemIdentifier(id),
+                TextureMap.layer0(itemIdentifier(texture)),
+                itemModelGenerator.writer
+            );
+    }
+
+    private void simpleItemTexture(String id, String texture, ItemModelGenerator itemModelGenerator) {
+        Models.GENERATED.upload(
+                itemIdentifier(id),
+                TextureMap.layer0(itemIdentifier(texture)),
+                itemModelGenerator.writer
+        );
+    }
+
+    private void layeredTexture(String id, String layer0, String layer1, ItemModelGenerator itemModelGenerator) {
         Models.GENERATED_TWO_LAYERS.upload(
                 itemIdentifier(id),
                 TextureMap.layered(
@@ -81,7 +138,7 @@ public class ModelGenerator extends FabricModelProvider {
 
     private void registerCore(BlockStateModelGenerator blockStateModelGenerator, GemType type) {
         String name = type.getName();
-        Block core = ModBlocks.blockMap.get(name + GEM_CORE_SUFFIX);
+        Block core = ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX);
 
         Identifier blockTexture = blockIdentifier(name + Constants.BLOCK_SUFFIX);
         Identifier overlayTexture = blockIdentifier("gem_core_overlay");

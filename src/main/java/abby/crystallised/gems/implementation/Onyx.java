@@ -6,7 +6,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -25,8 +24,8 @@ public class Onyx extends BaseImplementation {
     }
 
     @Override
-    public void tickInventory(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.tickInventory(stack, world, entity, slot, selected);
+    public void braceletInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        super.braceletInventoryTick(stack, world, entity, slot, selected);
         LivingEntity livingEntity = (LivingEntity) entity;
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 210));
     }

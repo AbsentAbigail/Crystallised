@@ -29,23 +29,62 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
             String displayName = gemType.getDisplayName();
 
             addTranslation(ModItems.gemItemMap.get(name), "Cut " + gemType.getDisplayName());
-            addTranslation(ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX), "Raw " + gemType.getDisplayName());
+            addTranslation(
+                    ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX),
+                    "Raw " + gemType.getDisplayName()
+            );
 
-            addTranslation(ModItems.gemToolMap.get(name + Constants.PICKAXE_SUFFIX), displayName + " Pickaxe");
+            addTranslation(ModItems.gemToolMap.get(
+                    name + Constants.PICKAXE_SUFFIX),
+                    displayName + " Pickaxe"
+            );
             addTranslation(ModItems.gemToolMap.get(name + Constants.AXE_SUFFIX), displayName + " Axe");
             addTranslation(ModItems.gemToolMap.get(name + Constants.SHOVEL_SUFFIX), displayName + " Shovel");
             addTranslation(ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX), displayName + " Sword");
 
             for (MetalBase metal : MetalBase.values()) {
-                addTranslation(ModItems.accessoryItemMap.get(name + metal.getItemSuffix() + Constants.BRACELET_SUFFIX), displayName + " Bracelet");
+                addTranslation(
+                        ModItems.accessoryItemMap.get(name + metal.getItemSuffix() + Constants.BRACELET_SUFFIX),
+                        displayName + " " + metal.getDisplayName() + " Bracelet"
+                );
+                addTranslation(
+                        ModItems.accessoryItemMap.get(name + metal.getItemSuffix() + Constants.NECKLACE_SUFFIX),
+                        displayName + " " + metal.getDisplayName() + " Necklace"
+                );
+                addTranslation(
+                        ModItems.accessoryItemMap.get(name + metal.getItemSuffix() + Constants.KEY_SUFFIX),
+                        displayName + " " + metal.getDisplayName() + " Key"
+                );
             }
 
             addTranslation(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX), "Block of " + displayName);
             addTranslation(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX), displayName + " Ore");
+            addTranslation(ModBlocks.blockMap.get(
+                    name + Constants.ORE_SUFFIX + Constants.DEEPSLATE_SUFFIX),
+                    displayName + " Deepslate Ore"
+            );
             addTranslation(ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX), displayName + " Core");
             addTranslation(ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX), displayName + " Lamp");
-            addTranslation(ModBlocks.blockMap.get(name + Constants.INVERTED_LAMP_SUFFIX), displayName + " Inverted Lamp");
+            addTranslation(ModBlocks.blockMap.get(
+                    name + Constants.INVERTED_LAMP_SUFFIX),
+                    displayName + " Inverted Lamp"
+            );
         });
+
+        for (MetalBase metal : MetalBase.values()) {
+            addTranslation(
+                    ModItems.accessoryItemMap.get(metal.getLowercaseName() + Constants.BRACELET_SUFFIX),
+                    metal.getDisplayName() + " Bracelet"
+            );
+            addTranslation(
+                    ModItems.accessoryItemMap.get(metal.getLowercaseName() + Constants.NECKLACE_SUFFIX),
+                    metal.getDisplayName() + " Necklace"
+            );
+            addTranslation(
+                    ModItems.accessoryItemMap.get(metal.getLowercaseName() + Constants.KEY_SUFFIX),
+                    metal.getDisplayName() + " Key"
+            );
+        }
 
         addTranslation(ModBlocks.blockMap.get("gem_cutter"), "Gem Cutter");
 
@@ -54,14 +93,20 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
 
         translationBuilder.add(
                 Registries.ITEM_GROUP.getKey(
-                        Registries.ITEM_GROUP.get(Utility.identifier("general_group"))).get(),
+                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.GENERAL_GROUP_ID))).get(),
                 "Crystallised General"
         );
         translationBuilder.add(
                 Registries.ITEM_GROUP.getKey(
-                        Registries.ITEM_GROUP.get(Utility.identifier("tool_group"))).get(),
+                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.TOOL_GROUP_ID))).get(),
                 "Crystallised Tools"
         );
+        translationBuilder.add(
+                Registries.ITEM_GROUP.getKey(
+                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.ACCESSORY_GROUP_ID))).get(),
+                "Crystallised Accessories"
+        );
+
 
         translationBuilder.add(
                 "death.attack.eat_rock",

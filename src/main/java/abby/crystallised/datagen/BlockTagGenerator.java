@@ -33,8 +33,6 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
                     );
             getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
                     .add(block);
-            getOrCreateTagBuilder(BlockTags.STONE_ORE_REPLACEABLES)
-                    .add(ore);
             getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                     .add(
                             ore,

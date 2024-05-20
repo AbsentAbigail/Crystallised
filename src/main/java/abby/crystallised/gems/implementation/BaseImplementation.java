@@ -5,6 +5,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
+import net.minecraft.util.ActionResult;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -33,9 +35,17 @@ public class BaseImplementation {
     }
 
     /**
-     * Ring item effects
+     * Jewelry item effects
      */
-    public void tickInventory(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+    public void braceletInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
 
+    }
+
+    public void necklaceInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+
+    }
+
+    public ActionResult keyUseOnBlock(ItemUsageContext context, ActionResult actionResult) {
+        return actionResult;
     }
 }

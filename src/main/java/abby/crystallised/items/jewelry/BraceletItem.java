@@ -7,16 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class BraceletItem extends Item {
-    protected final GemType gemType;
-
+public class BraceletItem extends JewelryItem {
     public BraceletItem(GemType type) {
-        super(new Item.Settings());
-        this.gemType = type;
-    }
-
-    public GemType getGemType() {
-        return gemType;
+        super(type, new Item.Settings());
     }
 
     @Override
@@ -26,7 +19,7 @@ public class BraceletItem extends Item {
             return;
         if (entity.isLiving()) {
             BaseImplementation implementation = gemType.getImplementation();
-            implementation.tickInventory(stack, world, entity, slot, selected);
+            implementation.braceletInventoryTick(stack, world, entity, slot, selected);
         }
     }
 }
