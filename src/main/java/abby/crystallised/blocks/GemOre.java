@@ -1,15 +1,16 @@
 package abby.crystallised.blocks;
 
 import abby.crystallised.gems.GemType;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
-public class GemOre extends Block {
+public class GemOre extends ExperienceDroppingBlock {
 
     private final GemType type;
 
     public GemOre(GemType type) {
-        super(getSettingsFromType(type));
+        super(UniformIntProvider.create(3, 7), getSettingsFromType(type));
         this.type = type;
         this.setDefaultState(this.stateManager.getDefaultState());
     }

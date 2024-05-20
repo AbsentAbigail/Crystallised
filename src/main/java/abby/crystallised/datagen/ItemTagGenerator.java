@@ -19,6 +19,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         GemType.forEach((name, type) -> {
+            getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(ModItems.gemItemMap.get(name));
+
             Item pickaxe = ModItems.gemToolMap.get(name + Constants.PICKAXE_SUFFIX);
             getOrCreateTagBuilder(ItemTags.PICKAXES).add(pickaxe);
             getOrCreateTagBuilder(ItemTags.MINING_LOOT_ENCHANTABLE).add(pickaxe);
