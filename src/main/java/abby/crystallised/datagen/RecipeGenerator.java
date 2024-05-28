@@ -1,12 +1,14 @@
 package abby.crystallised.datagen;
 
 import abby.crystallised.Constants;
-import abby.crystallised.Utility;
+import abby.crystallised.blocks.ModBlocks;
 import abby.crystallised.gems.GemType;
 import abby.crystallised.items.ModItems;
 import abby.crystallised.items.jewelry.MetalBase;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -31,17 +33,107 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .pattern("oio")
                 .input('o', ModItems.OBSIDIAN_SHARD)
                 .input('i', Items.IRON_NUGGET)
-                .criterion(FabricRecipeProvider.hasItem(ModItems.OBSIDIAN_SHARD),
-                        FabricRecipeProvider.conditionsFromItem(ModItems.OBSIDIAN_SHARD))
+                .criterion(FabricRecipeProvider.hasItem(Items.IRON_NUGGET),
+                        FabricRecipeProvider.conditionsFromItem(Items.IRON_NUGGET))
                 .offerTo(exporter);
 
-        GemType.forEach((s, gemType) -> {
-            String raw_name = gemType.getName() + Constants.RAW_SUFFIX;
-            String cut_name = gemType.getName();
-            Item raw = ModItems.rawGemItemMap.get(raw_name);
-            Item cut = ModItems.gemItemMap.get(cut_name);
+        GemType.forEach((name, gemType) -> {
+            Item rawGem = ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX);
+            Item cutGem = ModItems.gemItemMap.get(name);
+            Block gemBlock = ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX);
+            Block lampBlock = ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX);
 
-            RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.MISC, cut, raw);
+            RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.MISC, cutGem, rawGem);
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,
+                            ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX))
+                    .pattern("omo")
+                    .pattern("mgm")
+                    .pattern("omo")
+                    .input('g', gemBlock)
+                    .input('m', ModItems.TOOL_ROD)
+                    .input('o', Items.OBSIDIAN)
+                    .criterion(FabricRecipeProvider.hasItem(gemBlock),
+                            FabricRecipeProvider.conditionsFromItem(gemBlock))
+                    .criterion(FabricRecipeProvider.hasItem(ModItems.TOOL_ROD),
+                            FabricRecipeProvider.conditionsFromItem(ModItems.TOOL_ROD))
+                    .group(Constants.MODID + ":cores")
+                    .offerTo(exporter);
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, gemBlock)
+                    .pattern("aaa")
+                    .pattern("aaa")
+                    .pattern("aaa")
+                    .input('a', rawGem)
+                    .criterion(FabricRecipeProvider.hasItem(rawGem), FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .offerTo(exporter);
+
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, rawGem, 9)
+                    .input(gemBlock)
+                    .criterion(FabricRecipeProvider.hasItem(gemBlock), FabricRecipeProvider.conditionsFromItem(gemBlock))
+                    .offerTo(exporter);
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, lampBlock)
+                    .pattern(" g ")
+                    .pattern("glg")
+                    .pattern(" g ")
+                    .input('g', cutGem)
+                    .input('l', Blocks.REDSTONE_LAMP)
+                    .criterion(FabricRecipeProvider.hasItem(Blocks.REDSTONE_LAMP),
+                            FabricRecipeProvider.conditionsFromItem(Blocks.REDSTONE_LAMP))
+                    .criterion(FabricRecipeProvider.hasItem(cutGem),
+                            FabricRecipeProvider.conditionsFromItem(cutGem))
+                    .group(Constants.MODID + ":lamps")
+                    .offerTo(exporter);
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE,
+                    ModBlocks.blockMap.get(name + Constants.INVERTED_LAMP_SUFFIX))
+                    .input(lampBlock)
+                    .input(Blocks.REDSTONE_TORCH)
+                    .criterion(FabricRecipeProvider.hasItem(lampBlock),
+                            FabricRecipeProvider.conditionsFromItem(lampBlock))
+                    .group(Constants.MODID + ":lamps")
+                    .offerTo(exporter);
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
+                    ModItems.gemToolMap.get(name + Constants.PICKAXE_SUFFIX))
+                    .pattern("ggg")
+                    .pattern(" r ")
+                    .pattern(" r ")
+                    .input('g', rawGem)
+                    .input('r', ModItems.TOOL_ROD)
+                    .criterion(FabricRecipeProvider.hasItem(rawGem),
+                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .offerTo(exporter);
+            ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
+                            ModItems.gemToolMap.get(name + Constants.AXE_SUFFIX))
+                    .pattern("gg ")
+                    .pattern("gr ")
+                    .pattern(" r ")
+                    .input('g', rawGem)
+                    .input('r', ModItems.TOOL_ROD)
+                    .criterion(FabricRecipeProvider.hasItem(rawGem),
+                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .offerTo(exporter);
+            ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
+                            ModItems.gemToolMap.get(name + Constants.SHOVEL_SUFFIX))
+                    .pattern("g")
+                    .pattern("r")
+                    .pattern("r")
+                    .input('g', rawGem)
+                    .input('r', ModItems.TOOL_ROD)
+                    .criterion(FabricRecipeProvider.hasItem(rawGem),
+                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .offerTo(exporter);
+            ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
+                            ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX))
+                    .pattern("g")
+                    .pattern("g")
+                    .pattern("r")
+                    .input('g', rawGem)
+                    .input('r', ModItems.TOOL_ROD)
+                    .criterion(FabricRecipeProvider.hasItem(rawGem),
+                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .offerTo(exporter);
         });
 
         for (MetalBase metal : MetalBase.values()) {
@@ -54,7 +146,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .input('i', Items.IRON_NUGGET)
                     .criterion(FabricRecipeProvider.hasItem(metal.getMaterial()),
                             FabricRecipeProvider.conditionsFromItem(metal.getMaterial()))
-                    .group("crystallised:bracelets")
+                    .group(Constants.MODID + ":bracelets")
                     .offerTo(exporter);
 
             ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,
@@ -66,7 +158,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .input('c', Items.CHAIN)
                     .criterion(FabricRecipeProvider.hasItem(metal.getMaterial()),
                             FabricRecipeProvider.conditionsFromItem(metal.getMaterial()))
-                    .group("crystallised:necklaces")
+                    .group(Constants.MODID + ":necklaces")
                     .offerTo(exporter);
 
             ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,
@@ -78,7 +170,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .input('i', Items.IRON_NUGGET)
                     .criterion(FabricRecipeProvider.hasItem(metal.getMaterial()),
                             FabricRecipeProvider.conditionsFromItem(metal.getMaterial()))
-                    .group("crystallised:keys")
+                    .group(Constants.MODID + ":keys")
                     .offerTo(exporter);
         }
 
@@ -100,7 +192,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                         ))
                         .criterion(FabricRecipeProvider.hasItem(metal.getMaterial()),
                                 FabricRecipeProvider.conditionsFromItem(metal.getMaterial()))
-                        .group("crystallised:bracelets")
+                        .group(Constants.MODID + ":bracelets")
                         .offerTo(exporter);
 
                 ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC,
@@ -115,7 +207,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                         ))
                         .criterion(FabricRecipeProvider.hasItem(metal.getMaterial()),
                                 FabricRecipeProvider.conditionsFromItem(metal.getMaterial()))
-                        .group("crystallised:necklaces")
+                        .group(Constants.MODID + ":necklaces")
                         .offerTo(exporter);
 
                 ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC,
@@ -130,7 +222,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                         ))
                         .criterion(FabricRecipeProvider.hasItem(metal.getMaterial()),
                                 FabricRecipeProvider.conditionsFromItem(metal.getMaterial()))
-                        .group("crystallised:keys")
+                        .group(Constants.MODID + ":keys")
                         .offerTo(exporter);
             });
         }
