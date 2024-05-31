@@ -15,6 +15,6 @@ public class ModBlockEntities {
     );
 
     public ModBlockEntities() {
-
+        Utility.LOGGER.debug("START REGISTER BLOCK ENTITIES");
     }
 }

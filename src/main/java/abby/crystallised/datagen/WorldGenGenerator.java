@@ -20,7 +20,7 @@ public class WorldGenGenerator implements DataProvider {
     final DataOutput.PathResolver configuredPathResolver;
     final DataOutput.PathResolver placedPathResolver;
 
-    public WorldGenGenerator(DataOutput output) {
+    public WorldGenGenerator(DataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookupFuture) {
         this.configuredPathResolver = output.getResolver(DataOutput.OutputType.DATA_PACK, "worldgen/configured_feature");
         this.placedPathResolver = output.getResolver(DataOutput.OutputType.DATA_PACK, "worldgen/placed_feature");
     }

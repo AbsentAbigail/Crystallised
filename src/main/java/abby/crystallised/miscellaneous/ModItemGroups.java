@@ -18,6 +18,8 @@ import java.util.Map;
 
 public class ModItemGroups {
     public ModItemGroups() {
+        Utility.LOGGER.debug("START REGISTER ITEM GROUPS");
+
         Registry.register(Registries.ITEM_GROUP, Utility.identifier(Constants.GENERAL_GROUP_ID), GENERAL_GROUP);
         Registry.register(Registries.ITEM_GROUP, Utility.identifier(Constants.TOOL_GROUP_ID), TOOL_GROUP);
         Registry.register(Registries.ITEM_GROUP, Utility.identifier(Constants.ACCESSORY_GROUP_ID), ACCESSORY_GROUP);
