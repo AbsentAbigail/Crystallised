@@ -58,10 +58,8 @@ public class ModItemGroups {
                             GemType.SAPPHIRE.getName() + MetalBase.IRON.getItemSuffix() + Constants.BRACELET_SUFFIX)
             ))
             .displayName(Text.translatable("itemgroup.crystallised.accessories"))
-            .entries((context, entries) -> {
-                ModItems.accessoryItemMap.forEach(
-                        (s, item) -> entries.add(item)
-                );
-            })
+            .entries((context, entries) -> ModItems.accessoryItemMap.forEach(
+                    (s, item) -> entries.add(item)
+            ))
             .build();
 }

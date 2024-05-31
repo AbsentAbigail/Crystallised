@@ -93,17 +93,17 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
 
         translationBuilder.add(
                 Registries.ITEM_GROUP.getKey(
-                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.GENERAL_GROUP_ID))).get(),
+                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.GENERAL_GROUP_ID))).orElseThrow(),
                 "Crystallised General"
         );
         translationBuilder.add(
                 Registries.ITEM_GROUP.getKey(
-                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.TOOL_GROUP_ID))).get(),
+                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.TOOL_GROUP_ID))).orElseThrow(),
                 "Crystallised Tools"
         );
         translationBuilder.add(
                 Registries.ITEM_GROUP.getKey(
-                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.ACCESSORY_GROUP_ID))).get(),
+                        Registries.ITEM_GROUP.get(Utility.identifier(Constants.ACCESSORY_GROUP_ID))).orElseThrow(),
                 "Crystallised Accessories"
         );
 
