@@ -54,7 +54,7 @@ dependencies {
 
 	modImplementation "com.ptsmods:devlogin:3.4.1" // Login to Minecraft account instead of using debug account
 
-	// modImplementation "dev.emi:trinkets:${trinkets_version}"
+	modImplementation "dev.emi:trinkets:${trinkets_version}"
 }
 
 processResources {

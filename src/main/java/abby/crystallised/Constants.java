@@ -2,7 +2,6 @@ package abby.crystallised;
 
 public class Constants {
     public static final String MODID = "crystallised";
-    public static final String MODNAME = "Crystallised";
 
     public static final String GENERAL_GROUP_ID = "general_group";
     public static final String TOOL_GROUP_ID = "tool_group";
@@ -22,6 +21,7 @@ public class Constants {
     public static final String BLOCK_SUFFIX = "_block";
     public static final String ORE_SUFFIX = "_ore";
     public static final String DEEPSLATE_SUFFIX = "_deepslate";
+    public static final String ORE_DEEPSLATE_SUFFIX = Constants.ORE_SUFFIX + Constants.DEEPSLATE_SUFFIX;
     public static final String LAMP_SUFFIX = "_lamp";
     public static final String INVERTED_SUFFIX = "_inverted";
     public static final String INVERTED_LAMP_SUFFIX = LAMP_SUFFIX + INVERTED_SUFFIX;

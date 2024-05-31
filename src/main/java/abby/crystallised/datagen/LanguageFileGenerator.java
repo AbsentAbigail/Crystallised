@@ -60,7 +60,7 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
             addTranslation(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX), "Block of " + displayName);
             addTranslation(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX), displayName + " Ore");
             addTranslation(ModBlocks.blockMap.get(
-                    name + Constants.ORE_SUFFIX + Constants.DEEPSLATE_SUFFIX),
+                    name + Constants.ORE_DEEPSLATE_SUFFIX),
                     displayName + " Deepslate Ore"
             );
             addTranslation(ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX), displayName + " Core");
@@ -115,6 +115,15 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
         translationBuilder.add(
                 "death.attack.moonfall",
                 "%1$s succumbed to the moon"
+        );
+
+        translationBuilder.add(
+                "trinkets.slot.hand.bracelet",
+                "Bracelet"
+        );
+        translationBuilder.add(
+                "trinkets.slot.offhand.bracelet",
+                "Offhand Bracelet"
         );
     }
 

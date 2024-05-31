@@ -15,5 +15,6 @@ public class CrystallisedDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(BlockLootTableGenerator::new);
 		pack.addProvider(ItemTagGenerator::new);
 		pack.addProvider(BlockTagGenerator::new);
+		pack.addProvider(WorldGenGenerator::new);
 	}
 }

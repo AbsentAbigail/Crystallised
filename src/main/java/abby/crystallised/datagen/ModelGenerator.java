@@ -33,7 +33,7 @@ public class ModelGenerator extends FabricModelProvider {
         GemType.MAP.forEach((name, gemType) -> {
             blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX));
             blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX));
-            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX + Constants.DEEPSLATE_SUFFIX));
+            blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.blockMap.get(name + Constants.ORE_DEEPSLATE_SUFFIX));
             registerLamps(blockStateModelGenerator, gemType);
             registerCore(blockStateModelGenerator, gemType);
         });

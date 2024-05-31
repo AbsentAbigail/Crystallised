@@ -34,9 +34,15 @@ public class ModItems {
         Utility.LOGGER.debug("START REGISTER ITEMS");
 
         for (MetalBase metalBase : MetalBase.values()) {
-            registerItemInMap(metalBase.getLowercaseName() + Constants.BRACELET_SUFFIX, new BasicItem(), accessoryItemMap);
-            registerItemInMap(metalBase.getLowercaseName() + Constants.NECKLACE_SUFFIX, new BasicItem(), accessoryItemMap);
-            registerItemInMap(metalBase.getLowercaseName() + Constants.KEY_SUFFIX, new BasicItem(), accessoryItemMap);
+            registerItemInMap(
+                    metalBase.getLowercaseName() + Constants.BRACELET_SUFFIX, new BasicItem(), accessoryItemMap
+            );
+            registerItemInMap(
+                    metalBase.getLowercaseName() + Constants.NECKLACE_SUFFIX, new BasicItem(), accessoryItemMap
+            );
+            registerItemInMap(
+                    metalBase.getLowercaseName() + Constants.KEY_SUFFIX, new BasicItem(), accessoryItemMap
+            );
         }
         registerGemItems();
 

@@ -24,9 +24,9 @@ public class BlockLootTableGenerator extends FabricBlockLootTableProvider {
                             ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX),
                             ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX)
                     ));
-            addDrop(ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX + Constants.DEEPSLATE_SUFFIX),
+            addDrop(ModBlocks.blockMap.get(name + Constants.ORE_DEEPSLATE_SUFFIX),
                     oreDrops(
-                            ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX + Constants.DEEPSLATE_SUFFIX),
+                            ModBlocks.blockMap.get(name + Constants.ORE_DEEPSLATE_SUFFIX),
                             ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX)
                     ));
             addDrop(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX), drops(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX)));
