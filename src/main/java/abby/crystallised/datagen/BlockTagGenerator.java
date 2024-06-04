@@ -21,12 +21,14 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
         GemType.forEach((name, type) -> {
             Block block = ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX);
             Block ore = ModBlocks.blockMap.get(name + Constants.ORE_SUFFIX);
+            Block deepslate_ore = ModBlocks.blockMap.get(name + Constants.ORE_DEEPSLATE_SUFFIX);
             Block core = ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX);
 
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                     .add(
                             block,
                             ore,
+                            deepslate_ore,
                             ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX),
                             ModBlocks.blockMap.get(name + Constants.INVERTED_LAMP_SUFFIX),
                             core
@@ -36,6 +38,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider {
             getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                     .add(
                             ore,
+                            deepslate_ore,
                             core
                     );
         });
