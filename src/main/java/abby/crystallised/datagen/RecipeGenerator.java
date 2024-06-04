@@ -45,7 +45,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         GemType.forEach((name, gemType) -> {
-            Item rawGem = ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX);
+//            Item rawGem = ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX);
             Item cutGem = ModItems.gemItemMap.get(name);
             Block gemBlock = ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX);
             Block lampBlock = ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX);
