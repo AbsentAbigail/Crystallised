@@ -4,7 +4,7 @@ plugins {
 }
 
 version = project.mod_version
-trinkets_version = project.trinkets_version
+trinkets_version = project.properties['trinkets_version']
 group = project.maven_group
 
 base {
@@ -60,11 +60,11 @@ dependencies {
 
 processResources {
 	inputs.property "version", project.version
-	inputs.property "trinkets_version", project.trinkets_version
+	inputs.property "trinkets_version", trinkets_version
 
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
-		expand "version": project.trinkets_version
+		expand "trinkets_version": trinkets_version
 	}
 }
 
