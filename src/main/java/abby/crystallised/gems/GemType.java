@@ -20,6 +20,11 @@ public class GemType implements Comparable<GemType> {
             13,
             0x043681, 0x021c43,
             new Azurite()).register();
+    public static final GemType BULLSEYE = new GemType("bullseye", "Bull's Eye",
+            7.5F,
+            8,
+            0x8f2316, 0x6b190e,
+            new BullsEye()).register();
     public static final GemType FLUORITE = new GemType("fluorite", "Fluorite",
             4F,
             13,
@@ -58,7 +63,8 @@ public class GemType implements Comparable<GemType> {
     public static final GemType PHOSPHOPHYLLITE = new GemType("phosphophyllite", "Phosphophyllite",
             3.5F,
             30,
-            0x21c773, 0x008340).register();
+            0x21c773, 0x008340,
+            new Phosphophyllite()).register();
     public static final GemType ROSEQUARTZ = new GemType("rosequartz", "Rose Quartz",
             7F,
             10,
@@ -89,18 +95,19 @@ public class GemType implements Comparable<GemType> {
     private final String displayName;
     private final float hardness;
     private final MaterialGem material;
-    private BaseImplementation implementation = new BaseImplementation();
 
     private final int capacity;
     private final float rarity;
     private final int primaryColour;
     private final int secondaryColour;
+    private final GemImplementation implementation;
 
     public GemType(String name,
                    String  displayName,
                    float hardness,
                    int magicCapacity,
-                   int primaryColour, int secondaryColour) {
+                   int primaryColour, int secondaryColour,
+                   GemImplementation implementation) {
         this.name = name;
         this.displayName = displayName;
         this.hardness = hardness;
@@ -108,17 +115,8 @@ public class GemType implements Comparable<GemType> {
         this.rarity = ((Math.round((20F - hardness - capacity) * 100F) / 100F) + 1F) / 10F;
         this.primaryColour = primaryColour;
         this.secondaryColour = secondaryColour;
-        material = new MaterialGem(this);
-    }
-
-    public GemType(String name,
-                   String displayName,
-                   float hardness,
-                   int magicCapacity,
-                   int primarycolour, int secondarycolour,
-                   BaseImplementation implementation) {
-        this(name, displayName, hardness, magicCapacity, primarycolour, secondarycolour);
         this.implementation = implementation;
+        material = new MaterialGem(this);
     }
 
     public String getName() {
@@ -153,7 +151,7 @@ public class GemType implements Comparable<GemType> {
         return material;
     }
 
-    public BaseImplementation getImplementation() {
+    public GemImplementation getImplementation() {
         return implementation;
     }
 

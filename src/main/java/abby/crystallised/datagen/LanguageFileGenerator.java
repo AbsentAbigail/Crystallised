@@ -6,6 +6,7 @@ import abby.crystallised.blocks.ModBlocks;
 import abby.crystallised.gems.GemType;
 import abby.crystallised.items.ModItems;
 import abby.crystallised.items.jewelry.MetalBase;
+import abby.crystallised.miscellaneous.ModItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.block.Block;
@@ -28,7 +29,7 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
         GemType.forEach((name, gemType) -> {
             String displayName = gemType.getDisplayName();
 
-            addTranslation(ModItems.gemItemMap.get(name), "Cut " + gemType.getDisplayName());
+            addTranslation(ModItems.gemItemMap.get(name), gemType.getDisplayName());
             addTranslation(
                     ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX),
                     "Raw " + gemType.getDisplayName()
@@ -107,7 +108,6 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
                 "Crystallised Accessories"
         );
 
-
         translationBuilder.add(
                 "death.attack.eat_rock",
                 "Just because Abigail does it, doesn't mean %1$s can eat rocks"
@@ -124,6 +124,23 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
         translationBuilder.add(
                 "trinkets.slot.offhand.bracelet",
                 "Offhand Bracelet"
+        );
+
+        translationBuilder.add(
+                ModItemTags.BRACELET,
+                "Bracelets"
+        );
+        translationBuilder.add(
+                ModItemTags.OFFHAND_BRACELET,
+                "Offhand Bracelets"
+        );
+        translationBuilder.add(
+                ModItemTags.NECKLACE,
+                "Necklaces"
+        );
+        translationBuilder.add(
+                ModItemTags.GEMS,
+                "Crystallised Gems"
         );
     }
 

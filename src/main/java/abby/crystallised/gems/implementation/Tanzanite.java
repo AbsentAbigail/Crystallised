@@ -7,7 +7,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tanzanite extends BaseImplementation {
+public class Tanzanite implements GemImplementation {
     @Override
     public boolean isSnack() {
         return true;

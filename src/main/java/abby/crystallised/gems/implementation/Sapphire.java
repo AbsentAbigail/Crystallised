@@ -16,19 +16,18 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sapphire extends BaseImplementation {
+public class Sapphire implements GemImplementation {
     @Override
     public List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
         List<Pair<StatusEffectInstance, Float>> list = new ArrayList<>();
-        list.add(Pair.of(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 2), 1F));
+        list.add(Pair.of(new StatusEffectInstance(StatusEffects.SLOWNESS, 20 * 5, 2), 1F));
         return list;
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack itemStack = super.finishUsing(stack, world, user);
         if (world.isClient) {
-            return itemStack;
+            return stack;
         }
 
         BlockPos userPosition = user.getBlockPos();
@@ -64,6 +63,6 @@ public class Sapphire extends BaseImplementation {
 
             world.playSound(null, userPosition.getX(), userPosition.getY(), userPosition.getZ(), soundEvent, soundCategory);
         }
-        return itemStack;
+        return stack;
     }
 }

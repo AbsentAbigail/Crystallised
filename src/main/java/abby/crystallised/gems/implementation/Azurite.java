@@ -1,31 +1,24 @@
 package abby.crystallised.gems.implementation;
 
-import com.google.common.base.Suppliers;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.component.type.AttributeModifierSlot;
-import net.minecraft.component.type.AttributeModifiersComponent;
-import net.minecraft.entity.*;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-public class Azurite extends BaseImplementation {
+public class Azurite implements GemImplementation {
     /**
      * Gem item effects
      */
     // Status effects and percentage chances when eaten
     public List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
         List<Pair<StatusEffectInstance, Float>> list = new ArrayList<>();
-        list.add(Pair.of(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 300), 1F));
+        list.add(Pair.of(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 20 * 15), 1F));
         return list;
     }
 

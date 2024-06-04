@@ -7,7 +7,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoseQuartz extends BaseImplementation {
+public class RoseQuartz implements GemImplementation {
     /**
      * Gem item effects
      */

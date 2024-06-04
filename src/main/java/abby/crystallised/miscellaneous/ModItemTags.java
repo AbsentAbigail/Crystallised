@@ -10,6 +10,7 @@ public class ModItemTags {
     public static final TagKey<Item> BRACELET = of("trinkets", "hand/bracelet");
     public static final TagKey<Item> OFFHAND_BRACELET = of("trinkets", "offhand/bracelet");
     public static final TagKey<Item> NECKLACE = of("trinkets", "chest/necklace");
+    public static final TagKey<Item> GEMS = of("gems");
 
     private static TagKey<Item> of(String namespace, String path) {
         return TagKey.of(RegistryKeys.ITEM, new Identifier(namespace, path));

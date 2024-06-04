@@ -9,12 +9,11 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
-public class Kunzite extends BaseImplementation {
+public class Kunzite implements GemImplementation {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack itemStack = super.finishUsing(stack, world, user);
         if (world.isClient) {
-            return itemStack;
+            return stack;
         }
 
         for(int i = 0; i < 16; ++i) {
@@ -36,6 +35,6 @@ public class Kunzite extends BaseImplementation {
                 break;
             }
         }
-        return itemStack;
+        return stack;
     }
 }

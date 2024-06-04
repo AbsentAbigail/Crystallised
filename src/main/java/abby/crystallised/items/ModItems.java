@@ -61,7 +61,7 @@ public class ModItems {
 
     private void registerGemItems() {
         GemType.forEach((name, type) -> {
-            registerItemInMap(name, new CutGemItem(type), gemItemMap);
+            registerItemInMap(name, new GemItem(type), gemItemMap);
             registerItemInMap(name + Constants.RAW_SUFFIX, new RawGemItem(type), rawGemItemMap);
             for (MetalBase metalBase : MetalBase.values()) {
                 registerItemInMap(name + metalBase.getItemSuffix() + Constants.BRACELET_SUFFIX, new BraceletItem(type), accessoryItemMap);

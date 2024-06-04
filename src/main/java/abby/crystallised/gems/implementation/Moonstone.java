@@ -14,12 +14,11 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class Moonstone extends BaseImplementation {
+public class Moonstone implements GemImplementation {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack itemStack = super.finishUsing(stack, world, user);
         if (world.isClient) {
-            return itemStack;
+            return stack;
         }
 
         int moonphase = world.getMoonPhase();
@@ -31,7 +30,7 @@ public class Moonstone extends BaseImplementation {
 
             world.playSound(null, user.getX(), user.getY(), user.getZ(), soundEvent, soundCategory);
 
-            return itemStack;
+            return stack;
         }
 
         // On full moon
@@ -59,7 +58,7 @@ public class Moonstone extends BaseImplementation {
                 playSound(user, world);
             }
         }
-        return itemStack;
+        return stack;
     }
 
     private int dealAOE(World world, LivingEntity user, float radius, float damage) {

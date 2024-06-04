@@ -1,7 +1,7 @@
 package abby.crystallised.items.jewelry;
 
 import abby.crystallised.gems.GemType;
-import abby.crystallised.gems.implementation.BaseImplementation;
+import abby.crystallised.gems.implementation.GemImplementation;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,7 +18,7 @@ public class NecklaceItem extends JewelryItem {
         if (world.isClient)
             return;
         if (entity.isLiving()) {
-            BaseImplementation implementation = gemType.getImplementation();
+            GemImplementation implementation = gemType.getImplementation();
             implementation.necklaceInventoryTick(stack, world, entity, slot, selected);
         }
     }

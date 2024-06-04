@@ -5,12 +5,12 @@ import abby.crystallised.blocks.ModBlocks;
 import abby.crystallised.gems.GemType;
 import abby.crystallised.items.ModItems;
 import abby.crystallised.items.jewelry.MetalBase;
+import abby.crystallised.miscellaneous.ModItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
@@ -37,13 +37,20 @@ public class RecipeGenerator extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(Items.IRON_NUGGET))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.OBSIDIAN_SHARD, 16)
+                .input(Items.OBSIDIAN)
+                .input(ModItemTags.GEMS)
+                .criterion(FabricRecipeProvider.hasItem(Items.OBSIDIAN),
+                        FabricRecipeProvider.conditionsFromItem(Items.OBSIDIAN))
+                .offerTo(exporter);
+
         GemType.forEach((name, gemType) -> {
             Item rawGem = ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX);
             Item cutGem = ModItems.gemItemMap.get(name);
             Block gemBlock = ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX);
             Block lampBlock = ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX);
 
-            RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.MISC, cutGem, rawGem);
+//            RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.MISC, cutGem, rawGem);
 
             ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,
                             ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX))
@@ -64,11 +71,11 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .pattern("aaa")
                     .pattern("aaa")
                     .pattern("aaa")
-                    .input('a', rawGem)
-                    .criterion(FabricRecipeProvider.hasItem(rawGem), FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .input('a', cutGem)
+                    .criterion(FabricRecipeProvider.hasItem(cutGem), FabricRecipeProvider.conditionsFromItem(cutGem))
                     .offerTo(exporter);
 
-            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, rawGem, 9)
+            ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, cutGem, 9)
                     .input(gemBlock)
                     .criterion(FabricRecipeProvider.hasItem(gemBlock), FabricRecipeProvider.conditionsFromItem(gemBlock))
                     .offerTo(exporter);
@@ -99,40 +106,40 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .pattern("ggg")
                     .pattern(" r ")
                     .pattern(" r ")
-                    .input('g', rawGem)
+                    .input('g', cutGem)
                     .input('r', ModItems.TOOL_ROD)
-                    .criterion(FabricRecipeProvider.hasItem(rawGem),
-                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .criterion(FabricRecipeProvider.hasItem(cutGem),
+                            FabricRecipeProvider.conditionsFromItem(cutGem))
                     .offerTo(exporter);
             ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
                             ModItems.gemToolMap.get(name + Constants.AXE_SUFFIX))
                     .pattern("gg ")
                     .pattern("gr ")
                     .pattern(" r ")
-                    .input('g', rawGem)
+                    .input('g', cutGem)
                     .input('r', ModItems.TOOL_ROD)
-                    .criterion(FabricRecipeProvider.hasItem(rawGem),
-                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .criterion(FabricRecipeProvider.hasItem(cutGem),
+                            FabricRecipeProvider.conditionsFromItem(cutGem))
                     .offerTo(exporter);
             ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
                             ModItems.gemToolMap.get(name + Constants.SHOVEL_SUFFIX))
                     .pattern("g")
                     .pattern("r")
                     .pattern("r")
-                    .input('g', rawGem)
+                    .input('g', cutGem)
                     .input('r', ModItems.TOOL_ROD)
-                    .criterion(FabricRecipeProvider.hasItem(rawGem),
-                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .criterion(FabricRecipeProvider.hasItem(cutGem),
+                            FabricRecipeProvider.conditionsFromItem(cutGem))
                     .offerTo(exporter);
             ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
                             ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX))
                     .pattern("g")
                     .pattern("g")
                     .pattern("r")
-                    .input('g', rawGem)
+                    .input('g', cutGem)
                     .input('r', ModItems.TOOL_ROD)
-                    .criterion(FabricRecipeProvider.hasItem(rawGem),
-                            FabricRecipeProvider.conditionsFromItem(rawGem))
+                    .criterion(FabricRecipeProvider.hasItem(cutGem),
+                            FabricRecipeProvider.conditionsFromItem(cutGem))
                     .offerTo(exporter);
         });
 

@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Petalite extends BaseImplementation {
+public class Petalite implements GemImplementation {
     @Override
     public List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
         List<Pair<StatusEffectInstance, Float>> list = new ArrayList<>();
@@ -21,7 +21,6 @@ public class Petalite extends BaseImplementation {
 
     @Override
     public void braceletInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.braceletInventoryTick(stack, world, entity, slot, selected);
         LivingEntity livingEntity = (LivingEntity) entity;
         livingEntity.fallDistance = 0;
     }

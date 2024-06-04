@@ -17,7 +17,7 @@ import net.minecraft.world.event.GameEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fluorite extends BaseImplementation {
+public class Fluorite implements GemImplementation {
     @Override
     public List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
         List<Pair<StatusEffectInstance, Float>> list = new ArrayList<>();
@@ -27,10 +27,8 @@ public class Fluorite extends BaseImplementation {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack itemStack = super.finishUsing(stack, world, user);
-
         if (world.isClient) {
-            return itemStack;
+            return stack;
         }
 
         // repeat 5 times
@@ -52,8 +50,7 @@ public class Fluorite extends BaseImplementation {
             BlockState block2 = world.getBlockState(blockPos2);
 
             // Skip if block has block entity
-            if (block1.hasBlockEntity() || block2.hasBlockEntity())
-            {
+            if (block1.hasBlockEntity() || block2.hasBlockEntity()) {
                 continue;
             }
             // Skip if block is bedrock
@@ -73,6 +70,6 @@ public class Fluorite extends BaseImplementation {
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, soundCategory);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.BLOCK_GLASS_BREAK, soundCategory);
 
-        return itemStack;
+        return stack;
     }
 }

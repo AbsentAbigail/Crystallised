@@ -12,40 +12,36 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseImplementation {
+public interface GemImplementation {
     /**
      * Gem item effects
      */
 
     // Restored hunger when eaten
-    public int getNutrition() { return 0; }
+    default int getNutrition() { return 0; }
 
     // Restored Saturation when eaten (Saturation = Hunger * saturation * 2
-    public float getSaturation() { return 0F; }
+    default float getSaturation() { return 0F; }
 
-    public boolean isSnack() { return false; }
+    default boolean isSnack() { return false; }
 
     // Status effects and percentage chances when eaten
-    public List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
+    default List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
         return new ArrayList<>();
     }
 
-    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+    default ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         return stack;
     }
 
     /**
      * Jewelry item effects
      */
-    public void braceletInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+    default void braceletInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {}
 
-    }
+    default void necklaceInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {}
 
-    public void necklaceInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-
-    }
-
-    public ActionResult keyUseOnBlock(ItemUsageContext context, ActionResult actionResult) {
+    default ActionResult keyUseOnBlock(ItemUsageContext context, ActionResult actionResult) {
         return actionResult;
     }
 }

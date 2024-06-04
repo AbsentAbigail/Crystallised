@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Moissanite extends BaseImplementation {
+public class Moissanite implements GemImplementation {
     @Override
     public List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
         List<Pair<StatusEffectInstance, Float>> list = new ArrayList<>();
@@ -22,17 +22,15 @@ public class Moissanite extends BaseImplementation {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack itemStack = super.finishUsing(stack, world, user);
         if (world.isClient)
-            return itemStack;
+            return stack;
 
         user.damage(ModDamageSources.of(world, ModDamageSources.EAT_ROCK), 40);
-        return itemStack;
+        return stack;
     }
 
     @Override
     public void braceletInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.braceletInventoryTick(stack, world, entity, slot, selected);
         LivingEntity livingEntity = (LivingEntity) entity;
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 30, 3));
         livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 30));

@@ -7,7 +7,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Amber extends BaseImplementation {
+public class Amber implements GemImplementation {
     @Override
     public List<Pair<StatusEffectInstance, Float>> getStatusEffectsWhenEaten() {
         List<Pair<StatusEffectInstance, Float>> list = new ArrayList<>();

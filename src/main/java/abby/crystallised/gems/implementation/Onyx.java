@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Onyx extends BaseImplementation {
+public class Onyx implements GemImplementation {
     /**
      * Gem item effects
      */
@@ -25,8 +25,7 @@ public class Onyx extends BaseImplementation {
 
     @Override
     public void braceletInventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        super.braceletInventoryTick(stack, world, entity, slot, selected);
         LivingEntity livingEntity = (LivingEntity) entity;
-        livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 210));
+        livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20 * 10 + 10));
     }
 }
