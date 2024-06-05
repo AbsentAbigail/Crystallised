@@ -101,6 +101,7 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
         addTranslation(ModBlocks.AGENDER, "Agender Pride Block");
         addTranslation(ModBlocks.DEMIGIRL, "Demigirl Pride Block");
         addTranslation(ModBlocks.DEMIBOY, "Demiboy Pride Block");
+        addTranslation(ModBlocks.ITALIAN, "Italian Pride Block");
 
         translationBuilder.add(
                 Registries.ITEM_GROUP.getKey(

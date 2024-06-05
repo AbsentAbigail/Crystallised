@@ -48,5 +48,6 @@ public class BlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.AGENDER);
         addDrop(ModBlocks.DEMIGIRL);
         addDrop(ModBlocks.DEMIBOY);
+        addDrop(ModBlocks.ITALIAN);
     }
 }

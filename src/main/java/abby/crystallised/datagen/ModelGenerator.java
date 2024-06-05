@@ -51,6 +51,7 @@ public class ModelGenerator extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AGENDER);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEMIGIRL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEMIBOY);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ITALIAN);
     }
 
     @Override
