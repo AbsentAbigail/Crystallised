@@ -33,6 +33,20 @@ public class ModItemGroups {
                 ModItems.gemItemMap.forEach((s, item) -> entries.add(item));
                 ModBlocks.blockMap.forEach((s, block) -> entries.add(block));
                 ModItems.basicItemMap.forEach((s, item) -> entries.add(item));
+
+                entries.add(ModBlocks.PRIDE);
+                entries.add(ModBlocks.LESBIAN);
+                entries.add(ModBlocks.VINCIAN);
+                entries.add(ModBlocks.BISEXUAL);
+                entries.add(ModBlocks.PANSEXUAL);
+                entries.add(ModBlocks.ASEXUAL);
+                entries.add(ModBlocks.AROMANTIC);
+                entries.add(ModBlocks.TRANS);
+                entries.add(ModBlocks.NONBINARY);
+                entries.add(ModBlocks.GENDERFLUID);
+                entries.add(ModBlocks.AGENDER);
+                entries.add(ModBlocks.DEMIGIRL);
+                entries.add(ModBlocks.DEMIBOY);
             }))
             .build();
 

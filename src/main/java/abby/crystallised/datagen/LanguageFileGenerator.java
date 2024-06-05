@@ -88,6 +88,20 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
         addTranslation(ModItems.basicItemMap.get("obsidian_shard"), "Obsidian Shard");
         addTranslation(ModItems.basicItemMap.get("tool_rod"), "Obsidian Plated Iron Rod");
 
+        addTranslation(ModBlocks.PRIDE, "Pride Block");
+        addTranslation(ModBlocks.LESBIAN, "Lesbian Pride Block");
+        addTranslation(ModBlocks.VINCIAN, "Vincian Pride Block");
+        addTranslation(ModBlocks.BISEXUAL, "Bisexual Pride Block");
+        addTranslation(ModBlocks.PANSEXUAL, "Pansexual Pride Block");
+        addTranslation(ModBlocks.ASEXUAL, "Asexual Pride Block");
+        addTranslation(ModBlocks.AROMANTIC, "Aromantic Pride Block");
+        addTranslation(ModBlocks.TRANS, "Trans Pride Block");
+        addTranslation(ModBlocks.NONBINARY, "Nonbinary Pride Block");
+        addTranslation(ModBlocks.GENDERFLUID, "Genderfluid Pride Block");
+        addTranslation(ModBlocks.AGENDER, "Agender Pride Block");
+        addTranslation(ModBlocks.DEMIGIRL, "Demigirl Pride Block");
+        addTranslation(ModBlocks.DEMIBOY, "Demiboy Pride Block");
+
         translationBuilder.add(
                 Registries.ITEM_GROUP.getKey(
                         Registries.ITEM_GROUP.get(Utility.identifier(Constants.GENERAL_GROUP_ID))).orElseThrow(),

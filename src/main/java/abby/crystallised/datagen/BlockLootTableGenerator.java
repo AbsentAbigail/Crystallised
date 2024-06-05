@@ -29,11 +29,24 @@ public class BlockLootTableGenerator extends FabricBlockLootTableProvider {
                             ModBlocks.blockMap.get(name + Constants.ORE_DEEPSLATE_SUFFIX),
                             ModItems.gemItemMap.get(name)
                     ));
-            addDrop(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX), drops(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX)));
-            addDrop(ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX), drops(ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX)));
-            addDrop(ModBlocks.blockMap.get(name + Constants.INVERTED_LAMP_SUFFIX), drops(ModBlocks.blockMap.get(name + Constants.INVERTED_LAMP_SUFFIX)));
-            addDrop(ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX), drops(ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX)));
+            addDrop(ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX));
+            addDrop(ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX));
+            addDrop(ModBlocks.blockMap.get(name + Constants.INVERTED_LAMP_SUFFIX));
+            addDrop(ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX));
         });
 
+        addDrop(ModBlocks.PRIDE);
+        addDrop(ModBlocks.LESBIAN);
+        addDrop(ModBlocks.VINCIAN);
+        addDrop(ModBlocks.BISEXUAL);
+        addDrop(ModBlocks.PANSEXUAL);
+        addDrop(ModBlocks.ASEXUAL);
+        addDrop(ModBlocks.AROMANTIC);
+        addDrop(ModBlocks.TRANS);
+        addDrop(ModBlocks.NONBINARY);
+        addDrop(ModBlocks.GENDERFLUID);
+        addDrop(ModBlocks.AGENDER);
+        addDrop(ModBlocks.DEMIGIRL);
+        addDrop(ModBlocks.DEMIBOY);
     }
 }

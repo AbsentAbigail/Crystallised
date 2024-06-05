@@ -37,6 +37,20 @@ public class ModelGenerator extends FabricModelProvider {
             registerLamps(blockStateModelGenerator, gemType);
             registerCore(blockStateModelGenerator, gemType);
         });
+
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PRIDE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.LESBIAN);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VINCIAN);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.BISEXUAL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PANSEXUAL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.ASEXUAL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AROMANTIC);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.TRANS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.NONBINARY);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GENDERFLUID);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.AGENDER);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEMIGIRL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEMIBOY);
     }
 
     @Override

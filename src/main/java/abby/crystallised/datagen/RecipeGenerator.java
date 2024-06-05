@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -45,12 +46,9 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         GemType.forEach((name, gemType) -> {
-//            Item rawGem = ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX);
             Item cutGem = ModItems.gemItemMap.get(name);
             Block gemBlock = ModBlocks.blockMap.get(name + Constants.BLOCK_SUFFIX);
             Block lampBlock = ModBlocks.blockMap.get(name + Constants.LAMP_SUFFIX);
-
-//            RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.MISC, cutGem, rawGem);
 
             ShapedRecipeJsonBuilder.create(RecipeCategory.MISC,
                             ModBlocks.blockMap.get(name + Constants.CORE_SUFFIX))
@@ -182,6 +180,150 @@ public class RecipeGenerator extends FabricRecipeProvider {
         }
 
         registerAccessories(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRIDE, 16)
+                .input(ModItems.gemItemMap.get(GemType.RUBY.getName()))
+                .input(ModItems.gemItemMap.get(GemType.TOPAZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.AZURITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.AMBER.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PERIDOT.getName()))
+                .input(ModItems.gemItemMap.get(GemType.FLUORITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LESBIAN, 16)
+                .input(ModItems.gemItemMap.get(GemType.RUBY.getName()))
+                .input(ModItems.gemItemMap.get(GemType.TOPAZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.FLUORITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VINCIAN, 16)
+                .input(ModItems.gemItemMap.get(GemType.PERIDOT.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PHOSPHOPHYLLITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.FLUORITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BISEXUAL, 16)
+                .input(ModItems.gemItemMap.get(GemType.RUBY.getName()))
+                .input(ModItems.gemItemMap.get(GemType.KUNZITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.TANZANITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PANSEXUAL, 16)
+                .input(ModItems.gemItemMap.get(GemType.KUNZITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.AMBER.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ASEXUAL, 16)
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.FLUORITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AROMANTIC, 16)
+                .input(ModItems.gemItemMap.get(GemType.PERIDOT.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PHOSPHOPHYLLITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TRANS, 16)
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.NONBINARY, 16)
+                .input(ModItems.gemItemMap.get(GemType.AMBER.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.KUNZITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GENDERFLUID, 16)
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.FLUORITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ModItems.gemItemMap.get(GemType.AZURITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.AGENDER, 16)
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PHOSPHOPHYLLITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEMIGIRL, 16)
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DEMIBOY, 16)
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOONSTONE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ONYX.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
     }
 
     private void registerAccessories(RecipeExporter exporter) {
