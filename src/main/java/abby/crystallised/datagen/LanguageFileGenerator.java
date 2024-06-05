@@ -30,10 +30,6 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
             String displayName = gemType.getDisplayName();
 
             addTranslation(ModItems.gemItemMap.get(name), gemType.getDisplayName());
-            addTranslation(
-                    ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX),
-                    "Raw " + gemType.getDisplayName()
-            );
 
             addTranslation(ModItems.gemToolMap.get(
                     name + Constants.PICKAXE_SUFFIX),

@@ -45,7 +45,6 @@ public class ModelGenerator extends FabricModelProvider {
             String name = gemType.getName();
 
             itemModelGenerator.register(ModItems.gemItemMap.get(name), Models.GENERATED);
-            itemModelGenerator.register(ModItems.rawGemItemMap.get(name + Constants.RAW_SUFFIX), Models.GENERATED);
 
             simpleHandheldTexture(
                     name + Constants.PICKAXE_SUFFIX,

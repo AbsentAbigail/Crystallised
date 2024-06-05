@@ -22,7 +22,6 @@ import java.util.Map;
 
 public class ModItems {
     public static final Map<String, Item> gemItemMap = new LinkedHashMap<>();
-    public static final Map<String, Item> rawGemItemMap = new LinkedHashMap<>();
     public static final Map<String, Item> accessoryItemMap = new LinkedHashMap<>();
     public static final Map<String, Item> gemToolMap = new LinkedHashMap<>();
     public static final Map<String, Item> basicItemMap = new LinkedHashMap<>();
@@ -62,7 +61,6 @@ public class ModItems {
     private void registerGemItems() {
         GemType.forEach((name, type) -> {
             registerItemInMap(name, new GemItem(type), gemItemMap);
-            registerItemInMap(name + Constants.RAW_SUFFIX, new RawGemItem(type), rawGemItemMap);
             for (MetalBase metalBase : MetalBase.values()) {
                 registerItemInMap(name + metalBase.getItemSuffix() + Constants.BRACELET_SUFFIX, new BraceletItem(type), accessoryItemMap);
                 registerItemInMap(name + metalBase.getItemSuffix() + Constants.NECKLACE_SUFFIX, new NecklaceItem(type), accessoryItemMap);
