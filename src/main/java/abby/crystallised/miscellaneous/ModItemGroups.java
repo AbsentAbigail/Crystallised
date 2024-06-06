@@ -47,6 +47,7 @@ public class ModItemGroups {
                 entries.add(ModBlocks.AGENDER);
                 entries.add(ModBlocks.DEMIGIRL);
                 entries.add(ModBlocks.DEMIBOY);
+                entries.add(ModBlocks.PROGRESS);
             }))
             .build();
 
