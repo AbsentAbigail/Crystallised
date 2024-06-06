@@ -336,6 +336,24 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .criterion(FabricRecipeProvider.hasItem(ModBlocks.PRIDE),
                         FabricRecipeProvider.conditionsFromItem(ModBlocks.PRIDE))
                 .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TRANSFEM, 16)
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()), 2)
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()))
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TRANSMASC, 16)
+                .input(ModItems.gemItemMap.get(GemType.PETALITE.getName()))
+                .input(ModItems.gemItemMap.get(GemType.ROSEQUARTZ.getName()))
+                .input(ModItems.gemItemMap.get(GemType.MOISSANITE.getName()), 2)
+                .input(ItemTags.WOOL)
+                .criterion(FabricRecipeProvider.hasItem(Items.WHITE_WOOL),
+                        FabricRecipeProvider.conditionsFromTag(ItemTags.WOOL))
+                .offerTo(exporter);
     }
 
     private void registerAccessories(RecipeExporter exporter) {

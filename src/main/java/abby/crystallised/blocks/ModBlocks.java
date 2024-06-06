@@ -37,6 +37,8 @@ public class ModBlocks {
     public static final Block DEMIBOY = new Block(prideSettings);
     public static final Block ITALIAN = new Block(prideSettings);
     public static final Block PROGRESS = new Block(prideSettings);
+    public static final Block TRANSFEM = new Block(prideSettings);
+    public static final Block TRANSMASC = new Block(prideSettings);
 
     public ModBlocks() {
         Utility.LOGGER.debug("START REGISTER BLOCKS");
@@ -64,6 +66,8 @@ public class ModBlocks {
         registerPrideBlock(DEMIBOY, "pride_demiboy");
         registerPrideBlock(ITALIAN, "pride_italian");
         registerPrideBlock(PROGRESS, "pride_progress");
+        registerPrideBlock(TRANSFEM, "pride_transfem");
+        registerPrideBlock(TRANSMASC, "pride_transmasc");
     }
 
     private void registerGemBlocks() {
