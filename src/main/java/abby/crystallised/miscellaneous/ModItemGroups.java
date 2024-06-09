@@ -35,6 +35,7 @@ public class ModItemGroups {
                 ModItems.basicItemMap.forEach((s, item) -> entries.add(item));
 
                 entries.add(ModBlocks.PRIDE);
+                entries.add(ModBlocks.PROGRESS);
                 entries.add(ModBlocks.LESBIAN);
                 entries.add(ModBlocks.VINCIAN);
                 entries.add(ModBlocks.BISEXUAL);
@@ -42,12 +43,13 @@ public class ModItemGroups {
                 entries.add(ModBlocks.ASEXUAL);
                 entries.add(ModBlocks.AROMANTIC);
                 entries.add(ModBlocks.TRANS);
+                entries.add(ModBlocks.TRANSFEM);
+                entries.add(ModBlocks.TRANSMASC);
                 entries.add(ModBlocks.NONBINARY);
                 entries.add(ModBlocks.GENDERFLUID);
                 entries.add(ModBlocks.AGENDER);
                 entries.add(ModBlocks.DEMIGIRL);
                 entries.add(ModBlocks.DEMIBOY);
-                entries.add(ModBlocks.PROGRESS);
             }))
             .build();
 

@@ -20,36 +20,32 @@ public class MaterialGem implements ToolMaterial {
 
     @Override
     public float getMiningSpeedMultiplier() {
-        return switch (type.getName().toUpperCase()) {
-            case "AMBER" -> 2.0F;
-            case "PETALITE" -> 8.0F;
-            case "AZURITE", "PHOSPHOPHYLLITE" -> 5F;
-            case "AMETHYST", "PERIDOT" -> 8.5F;
-            case "RUBY", "SAPPHIRE" -> 7.2F;
-            default -> 8.0F;
-        };
+        float h = type.getHardness();
+
+        return (float)(Math.pow(-(0.4F * h - 3), 2) + 8);
     }
 
     @Override
     public float getAttackDamage() {
-        return switch (type.getName().toUpperCase()) {
-            case "AMBER" -> 2.0F;
-            case "PETALITE" -> 4.5F;
-            case "AZURITE", "PHOSPHOPHYLLITE" -> 6.0F;
-            case "AMETHYST", "PERIDOT" -> 2.1F;
-            case "RUBY", "SAPPHIRE" -> 2.7F;
-            default -> 3.0F;
-        };
+        if (type == GemType.ROSEQUARTZ)
+            return -8F;
+
+        float h = type.getHardness();
+        if (h < 3.0F) return 1.0F;
+
+        if (h < 6.0F) return (int)(-1.5F * h) + 11;
+
+        return (int)(0.7F * h) - 2;
     }
 
     @Override
     public TagKey<Block> getInverseTag() {
         double h = type.getHardness();
 
-        return h >= 8 ? BlockTags.INCORRECT_FOR_DIAMOND_TOOL :
-                (h >= 6 ? BlockTags.INCORRECT_FOR_IRON_TOOL :
-                        (h >= 4 ? BlockTags.INCORRECT_FOR_STONE_TOOL :
-                                BlockTags.INCORRECT_FOR_WOODEN_TOOL));
+        if (h < 4) return BlockTags.INCORRECT_FOR_WOODEN_TOOL;
+        if (h < 6) return BlockTags.INCORRECT_FOR_STONE_TOOL;
+        if (h < 8) return BlockTags.INCORRECT_FOR_IRON_TOOL;
+        return BlockTags.INCORRECT_FOR_DIAMOND_TOOL;
     }
 
     @Override

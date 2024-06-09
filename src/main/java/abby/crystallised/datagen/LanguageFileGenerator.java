@@ -31,6 +31,11 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
 
             addTranslation(ModItems.gemItemMap.get(name), gemType.getDisplayName());
 
+            translationBuilder.add(
+                    Constants.GEM_LORE_TRANSLATION_KEY + name,
+                    gemType.getLore()
+            );
+
             addTranslation(ModItems.gemToolMap.get(
                     name + Constants.PICKAXE_SUFFIX),
                     displayName + " Pickaxe"

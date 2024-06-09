@@ -30,6 +30,8 @@ public class ModBlocks {
     public static final Block ASEXUAL = new Block(prideSettings);
     public static final Block AROMANTIC = new Block(prideSettings);
     public static final Block TRANS = new Block(prideSettings);
+    public static final Block TRANSFEM = new Block(prideSettings);
+    public static final Block TRANSMASC = new Block(prideSettings);
     public static final Block NONBINARY = new Block(prideSettings);
     public static final Block GENDERFLUID = new Block(prideSettings);
     public static final Block AGENDER = new Block(prideSettings);
@@ -37,8 +39,6 @@ public class ModBlocks {
     public static final Block DEMIBOY = new Block(prideSettings);
     public static final Block ITALIAN = new Block(prideSettings);
     public static final Block PROGRESS = new Block(prideSettings);
-    public static final Block TRANSFEM = new Block(prideSettings);
-    public static final Block TRANSMASC = new Block(prideSettings);
 
     public ModBlocks() {
         Utility.LOGGER.debug("START REGISTER BLOCKS");
@@ -52,22 +52,22 @@ public class ModBlocks {
         );
 
         registerPrideBlock(PRIDE, "pride");
-        registerPrideBlock(LESBIAN, "pride_lesbian");
-        registerPrideBlock(VINCIAN, "pride_vincian");
-        registerPrideBlock(BISEXUAL, "pride_bisexual");
-        registerPrideBlock(PANSEXUAL, "pride_pansexual");
-        registerPrideBlock(ASEXUAL, "pride_asexual");
-        registerPrideBlock(AROMANTIC, "pride_aromantic");
-        registerPrideBlock(TRANS, "pride_trans");
-        registerPrideBlock(NONBINARY, "pride_nonbinary");
-        registerPrideBlock(GENDERFLUID, "pride_genderfluid");
-        registerPrideBlock(AGENDER, "pride_agender");
-        registerPrideBlock(DEMIGIRL, "pride_demigirl");
-        registerPrideBlock(DEMIBOY, "pride_demiboy");
-        registerPrideBlock(ITALIAN, "pride_italian");
-        registerPrideBlock(PROGRESS, "pride_progress");
-        registerPrideBlock(TRANSFEM, "pride_transfem");
-        registerPrideBlock(TRANSMASC, "pride_transmasc");
+        registerPrideBlock(LESBIAN, "lesbian");
+        registerPrideBlock(VINCIAN, "vincian");
+        registerPrideBlock(BISEXUAL, "bisexual");
+        registerPrideBlock(PANSEXUAL, "pansexual");
+        registerPrideBlock(ASEXUAL, "asexual");
+        registerPrideBlock(AROMANTIC, "aromantic");
+        registerPrideBlock(TRANS, "trans");
+        registerPrideBlock(TRANSFEM, "transfem");
+        registerPrideBlock(TRANSMASC, "transmasc");
+        registerPrideBlock(NONBINARY, "nonbinary");
+        registerPrideBlock(GENDERFLUID, "genderfluid");
+        registerPrideBlock(AGENDER, "agender");
+        registerPrideBlock(DEMIGIRL, "demigirl");
+        registerPrideBlock(DEMIBOY, "demiboy");
+        registerPrideBlock(ITALIAN, "italian");
+        registerPrideBlock(PROGRESS, "progress");
     }
 
     private void registerGemBlocks() {
@@ -90,7 +90,7 @@ public class ModBlocks {
 
     private void registerPrideBlock(Block block, String name) {
         Utility.LOGGER.debug("Registered: " + name);
-        Identifier identifier = Utility.identifier(name);
+        Identifier identifier = Utility.identifier(Constants.PRIDE_PREFIX + name);
         Registry.register(Registries.BLOCK, identifier, block);
         Registry.register(Registries.ITEM, identifier,
                 new BlockItem(block, new Item.Settings().fireproof().rarity(Rarity.UNCOMMON)));
