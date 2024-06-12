@@ -31,8 +31,8 @@ jobs:
       - name: release
         uses: softprops/action-gh-release@v2
         with:
-          repo_token: "${{ secrets.PAT }}"
-          automatic_release_tag: "${{ github.run_number }}"
-          title: "Crystallised ${{ github.run_number }}"
+          token: "${{ secrets.PAT }}"
+          tag_name: "${{ github.run_number }}"
+          name: "Crystallised ${{ github.run_number }}"
           prerelease: false
           files: build/libs/crystallised-[0-9]+\.[0-9]+\.[0-9]+\.jar
