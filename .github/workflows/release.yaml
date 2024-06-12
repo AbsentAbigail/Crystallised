@@ -1,19 +1,15 @@
-# Automatically build the project and run any configured tests for every push
-# and submitted pull request. This can help catch issues that only occur on
-# certain platforms or Java versions, and provides a first line of defence
-# against bad commits.
-
-name: build
-on: [pull_request, push]
+name: release
+on:
+  push:
+    branches:
+      - release
 
 jobs:
   build:
     strategy:
       matrix:
         # Use these Java versions
-        java: [
-          21,    # Current Java LTS
-        ]
+        java: [ 21 ]
     runs-on: ubuntu-22.04
     steps:
       - name: checkout repository
@@ -32,11 +28,11 @@ jobs:
         run: ./gradlew runDatagen
       - name: build
         run: ./gradlew build
-      - name: capture build artifacts
-        if: ${{ matrix.java == '21' }} # Only upload artifacts built from latest java
-        uses: actions/upload-artifact@v4
+      - name: release
+        uses: marvinpinto/action-automatic-releases@latest
         with:
-          name: Artifacts
-          path: |
-            build/libs/
-            !build/libs/*-sources.jar
+          repo_token: "${{ secrets.PAT }}"
+          automatic_release_tag: "${{ github.run_number }}"
+          title: "Automated Build ${{ github.run_number }}"
+          prerelease: false
+          files: staging/*.jar
