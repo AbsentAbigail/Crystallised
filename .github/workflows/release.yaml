@@ -29,12 +29,10 @@ jobs:
       - name: build
         run: ./gradlew build
       - name: release
-        uses: marvinpinto/action-automatic-releases@latest
+        uses: softprops/action-gh-release@latest
         with:
           repo_token: "${{ secrets.PAT }}"
           automatic_release_tag: "${{ github.run_number }}"
-          title: "Automated Build ${{ github.run_number }}"
+          title: "Crystallised ${{ github.run_number }}"
           prerelease: false
-          files: |
-            build/libs/
-            !build/libs/*-sources.jar
+          files: build/libs/crystallised-[0-9]+\.[0-9]+\.[0-9]+\.jar
