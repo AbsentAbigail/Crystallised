@@ -28,11 +28,18 @@ jobs:
         run: ./gradlew runDatagen
       - name: build
         run: ./gradlew build
+
+
+      - name: Get Mod Version
+        id: mod_version
+        run: grep "mod_version" gradle.properties | sed "s/\s//g" >> $GITHUB_OUTPUT
+
+
       - name: release
         uses: softprops/action-gh-release@v2
         with:
           token: "${{ secrets.PAT }}"
-          tag_name: "${{ github.run_number }}"
-          name: "Crystallised ${{ github.run_number }}"
+          tag_name: "${{ steps.mod_version.outputs.mod_version }}"
+          name: "Crystallised ${{ steps.mod_version.outputs.mod_version }}"
           prerelease: false
-          files: build/libs/crystallised-*.*.*[0-9].jar
+          files: build/libs/crystallised-${{ steps.mod_version.outputs.mod_version }}.jar
