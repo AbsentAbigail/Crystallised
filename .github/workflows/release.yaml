@@ -35,4 +35,6 @@ jobs:
           automatic_release_tag: "${{ github.run_number }}"
           title: "Automated Build ${{ github.run_number }}"
           prerelease: false
-          files: staging/*.jar
+          files: |
+            build/libs/
+            !build/libs/*-sources.jar
