@@ -64,6 +64,7 @@ public class ModItemGroups {
                     entries.add(new ItemStack(TOOL_MAP.get(name + Constants.AXE_SUFFIX)));
                     entries.add(new ItemStack(TOOL_MAP.get(name + Constants.SHOVEL_SUFFIX)));
                     entries.add(new ItemStack(TOOL_MAP.get(name + Constants.SWORD_SUFFIX)));
+                    entries.add(new ItemStack(TOOL_MAP.get(name + Constants.HOE_SUFFIX)));
                 }
             })
             .build();

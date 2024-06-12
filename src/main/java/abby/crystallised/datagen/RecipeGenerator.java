@@ -129,11 +129,21 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .criterion(FabricRecipeProvider.hasItem(cutGem),
                             FabricRecipeProvider.conditionsFromItem(cutGem))
                     .offerTo(exporter);
-            ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
+            ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT,
                             ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX))
                     .pattern("g")
                     .pattern("g")
                     .pattern("r")
+                    .input('g', cutGem)
+                    .input('r', ModItems.TOOL_ROD)
+                    .criterion(FabricRecipeProvider.hasItem(cutGem),
+                            FabricRecipeProvider.conditionsFromItem(cutGem))
+                    .offerTo(exporter);
+            ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS,
+                            ModItems.gemToolMap.get(name + Constants.HOE_SUFFIX))
+                    .pattern("gg")
+                    .pattern(" r")
+                    .pattern(" r")
                     .input('g', cutGem)
                     .input('r', ModItems.TOOL_ROD)
                     .criterion(FabricRecipeProvider.hasItem(cutGem),
@@ -181,6 +191,10 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
         registerAccessories(exporter);
 
+        registerPrideBlocks(exporter);
+    }
+
+    private void registerPrideBlocks(RecipeExporter exporter) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRIDE, 16)
                 .input(ModItems.gemItemMap.get(GemType.RUBY.getName()))
                 .input(ModItems.gemItemMap.get(GemType.TOPAZ.getName()))

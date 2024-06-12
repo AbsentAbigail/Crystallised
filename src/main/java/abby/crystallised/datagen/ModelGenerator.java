@@ -84,6 +84,11 @@ public class ModelGenerator extends FabricModelProvider {
                     Constants.SWORD_PATH_PREFIX + name + Constants.SWORD_SUFFIX,
                     itemModelGenerator
             );
+            simpleHandheldTexture(
+                    name + Constants.HOE_SUFFIX,
+                    Constants.HOE_PATH_PREFIX + name + Constants.HOE_SUFFIX,
+                    itemModelGenerator
+            );
 
             for (MetalBase base : MetalBase.values()) {
                 layeredTexture(

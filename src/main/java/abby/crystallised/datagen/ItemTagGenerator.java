@@ -43,6 +43,10 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
             Item sword = ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX);
             getOrCreateTagBuilder(ItemTags.SWORDS).add(sword);
             getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE).add(sword);
+
+            Item hoe = ModItems.gemToolMap.get(name + Constants.HOE_SUFFIX);
+            getOrCreateTagBuilder(ItemTags.HOES).add(hoe);
+            getOrCreateTagBuilder(ItemTags.MINING_LOOT_ENCHANTABLE).add(hoe);
         });
         configureAccessories();
     }

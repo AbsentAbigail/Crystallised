@@ -43,6 +43,7 @@ public class LanguageFileGenerator extends FabricLanguageProvider {
             addTranslation(ModItems.gemToolMap.get(name + Constants.AXE_SUFFIX), displayName + " Axe");
             addTranslation(ModItems.gemToolMap.get(name + Constants.SHOVEL_SUFFIX), displayName + " Shovel");
             addTranslation(ModItems.gemToolMap.get(name + Constants.SWORD_SUFFIX), displayName + " Sword");
+            addTranslation(ModItems.gemToolMap.get(name + Constants.HOE_SUFFIX), displayName + " Hoe");
 
             for (MetalBase metal : MetalBase.values()) {
                 addTranslation(

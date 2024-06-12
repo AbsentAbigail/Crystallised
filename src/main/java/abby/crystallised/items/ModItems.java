@@ -3,17 +3,12 @@ package abby.crystallised.items;
 import abby.crystallised.Constants;
 import abby.crystallised.Utility;
 import abby.crystallised.gems.GemType;
-import abby.crystallised.gems.MaterialGem;
 import abby.crystallised.items.jewelry.BraceletItem;
 import abby.crystallised.items.jewelry.KeyItem;
 import abby.crystallised.items.jewelry.MetalBase;
 import abby.crystallised.items.jewelry.NecklaceItem;
-import abby.crystallised.items.tools.AxeBase;
-import abby.crystallised.items.tools.PickaxeBase;
-import abby.crystallised.items.tools.ShovelBase;
-import abby.crystallised.items.tools.SwordBase;
+import abby.crystallised.items.tools.*;
 import net.minecraft.item.Item;
-import net.minecraft.item.ToolItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
@@ -72,27 +67,17 @@ public class ModItems {
 
     private void registerTools() {
         GemType.forEach((name, type) -> {
-            String namePick = name + Constants.PICKAXE_SUFFIX;
-            String nameAxe = name + Constants.AXE_SUFFIX;
-            String nameShovel = name + Constants.SHOVEL_SUFFIX;
-            String nameSword = name + Constants.SWORD_SUFFIX;
-
-            gemToolMap.put(namePick, new PickaxeBase(type.getMaterial()));
-            registerTool((ToolItem)gemToolMap.get(namePick), Constants.PICKAXE_SUFFIX);
-
-            gemToolMap.put(nameAxe, new AxeBase(type.getMaterial()));
-            registerTool((ToolItem)gemToolMap.get(nameAxe), Constants.AXE_SUFFIX);
-
-            gemToolMap.put(nameShovel, new ShovelBase(type.getMaterial()));
-            registerTool((ToolItem)gemToolMap.get(nameShovel), Constants.SHOVEL_SUFFIX);
-
-            gemToolMap.put(nameSword, new SwordBase(type.getMaterial()));
-            registerTool((ToolItem)gemToolMap.get(nameSword), Constants.SWORD_SUFFIX);
+            registerTool(name + Constants.PICKAXE_SUFFIX, new PickaxeBase(type.getMaterial()));
+            registerTool(name + Constants.AXE_SUFFIX, new AxeBase(type.getMaterial()));
+            registerTool(name + Constants.SHOVEL_SUFFIX, new ShovelBase(type.getMaterial()));
+            registerTool(name + Constants.SWORD_SUFFIX, new SwordBase(type.getMaterial()));
+            registerTool(name + Constants.HOE_SUFFIX, new HoeBase(type.getMaterial()));
         });
     }
 
-    private void registerTool(ToolItem item, String suffix) {
-        String name = ((MaterialGem)item.getMaterial()).getGemType().getName() + suffix;
-        registerItem(name, item);
+    private void registerTool(String name, Item tool) {
+        gemToolMap.put(name, tool);
+        registerItem(name, tool);
+
     }
 }

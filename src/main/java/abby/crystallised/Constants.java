@@ -13,6 +13,7 @@ public class Constants {
     public static final String AXE_SUFFIX = "_axe";
     public static final String SHOVEL_SUFFIX = "_shovel";
     public static final String SWORD_SUFFIX = "_sword";
+    public static final String HOE_SUFFIX = "_hoe";
 
     public static final String BRACELET_SUFFIX = "_bracelet";
     public static final String NECKLACE_SUFFIX = "_necklace";
@@ -35,4 +36,5 @@ public class Constants {
     public static final String AXE_PATH_PREFIX = "axe/";
     public static final String SHOVEL_PATH_PREFIX = "shovel/";
     public static final String SWORD_PATH_PREFIX = "sword/";
+    public static final String HOE_PATH_PREFIX = "hoe/";
 }
